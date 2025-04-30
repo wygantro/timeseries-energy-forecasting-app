@@ -10,7 +10,7 @@ def fetch_data():
     if response.status_code == 200:
         return response.json()
     else:
-        print("Failed to fetch data: Status code", response.status_code)
+        #print("Failed to fetch data: Status code", response.status_code)
         return None
 
 def run_every_minute():
