@@ -9,7 +9,6 @@ Description: This application serves as a MLOps framework designed for timeserie
 ![Alt text](./documentation/image-3.png) -->
 
 ## Directory Tree
-- A seperate deployment.yaml and reference README.md file are located within each service folder directory.
 
 ```
 ├───documentation
