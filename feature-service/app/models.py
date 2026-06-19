@@ -6,7 +6,6 @@ class Electric_demand_records(Base):
     
     time_stamp = Column(DateTime(), primary_key=True)
     electric_demand = Column(Numeric(15,6))
-    temp_value = Column(Numeric(15,6))
-    dewpoint_value = Column(Numeric(15,6))
+    #temp_value = Column(Numeric(15,6))
     price = Column(Numeric(15,6))
     location_id = Column(String(15,6))
