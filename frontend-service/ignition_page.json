@@ -1,0 +1,1640 @@
+{
+  "custom": {},
+  "params": {
+    "selectedAsset": {
+      "dataType": "String",
+      "value": "Plant Main Meter"
+    },
+    "forecastHorizon": {
+      "dataType": "String",
+      "value": "Next 24 Hours"
+    },
+    "modelVersion": {
+      "dataType": "String",
+      "value": "EnergyTS-v3.4"
+    }
+  },
+  "props": {
+    "defaultSize": {
+      "width": 1600,
+      "height": 900
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "version": 0,
+    "props": {
+      "direction": "column",
+      "wrap": "nowrap",
+      "justify": "flex-start",
+      "alignItems": "stretch",
+      "style": {
+        "backgroundColor": "#f3f5f7",
+        "fontFamily": "Arial, Helvetica, sans-serif",
+        "color": "#1f2937",
+        "padding": "16px",
+        "gap": "12px"
+      }
+    },
+    "meta": {
+      "name": "root"
+    },
+    "position": {},
+    "custom": {},
+    "children": [
+      {
+        "type": "ia.container.flex",
+        "version": 0,
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "backgroundColor": "#e1e7ef",
+            "border": "1px solid #c7d0da",
+            "borderRadius": "6px",
+            "padding": "12px 16px"
+          }
+        },
+        "meta": {
+          "name": "Header"
+        },
+        "position": {
+          "basis": "72px"
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "ENERGY ML TIME-SERIES PREDICTION",
+              "style": {
+                "fontSize": "28px",
+                "fontWeight": "800",
+                "color": "#1f2937",
+                "letterSpacing": "1px"
+              }
+            },
+            "meta": {
+              "name": "Title"
+            },
+            "position": {
+              "grow": 1
+            }
+          },
+          {
+            "type": "ia.input.dropdown",
+            "version": 0,
+            "props": {
+              "value": "Plant Main Meter",
+              "options": [
+                {
+                  "label": "Plant Main Meter",
+                  "value": "Plant Main Meter"
+                },
+                {
+                  "label": "Line 1 Energy",
+                  "value": "Line 1 Energy"
+                },
+                {
+                  "label": "Line 2 Energy",
+                  "value": "Line 2 Energy"
+                },
+                {
+                  "label": "Compressed Air",
+                  "value": "Compressed Air"
+                },
+                {
+                  "label": "HVAC Load",
+                  "value": "HVAC Load"
+                }
+              ],
+              "style": {
+                "width": "220px",
+                "backgroundColor": "#ffffff",
+                "border": "1px solid #c7d0da",
+                "color": "#1f2937"
+              }
+            },
+            "meta": {
+              "name": "AssetSelector"
+            },
+            "position": {
+              "basis": "240px"
+            },
+            "custom": {
+              "bindingNote": "Bind to view.params.selectedAsset or asset selection session property."
+            }
+          },
+          {
+            "type": "ia.input.dropdown",
+            "version": 0,
+            "props": {
+              "value": "Next 24 Hours",
+              "options": [
+                {
+                  "label": "Next 4 Hours",
+                  "value": "Next 4 Hours"
+                },
+                {
+                  "label": "Next 8 Hours",
+                  "value": "Next 8 Hours"
+                },
+                {
+                  "label": "Next 24 Hours",
+                  "value": "Next 24 Hours"
+                },
+                {
+                  "label": "Next 7 Days",
+                  "value": "Next 7 Days"
+                }
+              ],
+              "style": {
+                "width": "180px",
+                "backgroundColor": "#ffffff",
+                "border": "1px solid #c7d0da",
+                "color": "#1f2937"
+              }
+            },
+            "meta": {
+              "name": "ForecastHorizonSelector"
+            },
+            "position": {
+              "basis": "200px"
+            },
+            "custom": {
+              "bindingNote": "Bind to view.params.forecastHorizon."
+            }
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "version": 0,
+        "props": {
+          "direction": "row",
+          "gap": "12px",
+          "alignItems": "stretch"
+        },
+        "meta": {
+          "name": "MainContent"
+        },
+        "position": {
+          "grow": 1
+        },
+        "children": [
+          {
+            "type": "ia.container.flex",
+            "version": 0,
+            "props": {
+              "direction": "column",
+              "gap": "12px",
+              "style": {
+                "backgroundColor": "#ffffff",
+                "border": "1px solid #c7d0da",
+                "borderRadius": "6px",
+                "padding": "14px"
+              }
+            },
+            "meta": {
+              "name": "PredictionAndHistorySection"
+            },
+            "position": {
+              "grow": 2,
+              "basis": "66%"
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "version": 0,
+                "props": {
+                  "text": "HISTORICAL ENERGY + ML FORECAST",
+                  "style": {
+                    "fontSize": "18px",
+                    "fontWeight": "800",
+                    "color": "#1f2937",
+                    "borderBottom": "2px solid #2563eb",
+                    "paddingBottom": "8px"
+                  }
+                },
+                "meta": {
+                  "name": "PredictionSectionTitle"
+                },
+                "position": {
+                  "basis": "42px"
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "version": 0,
+                "props": {
+                  "direction": "row",
+                  "gap": "12px"
+                },
+                "meta": {
+                  "name": "EnergyKpiCards"
+                },
+                "position": {
+                  "basis": "145px"
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "version": 0,
+                    "props": {
+                      "direction": "column",
+                      "justify": "center",
+                      "style": {
+                        "backgroundColor": "#f8fafc",
+                        "border": "1px solid #c7d0da",
+                        "borderLeft": "6px solid #2563eb",
+                        "borderRadius": "4px",
+                        "padding": "12px"
+                      }
+                    },
+                    "meta": {
+                      "name": "CurrentDemandCard"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "CURRENT DEMAND",
+                          "style": {
+                            "fontSize": "13px",
+                            "fontWeight": "700",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "CurrentDemandCardLabel"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "842 kW",
+                          "style": {
+                            "fontSize": "42px",
+                            "fontWeight": "800",
+                            "color": "#1f2937"
+                          }
+                        },
+                        "meta": {
+                          "name": "CurrentDemandCardValue"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "Live meter value",
+                          "style": {
+                            "fontSize": "12px",
+                            "fontWeight": "500",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "CurrentDemandCardNote"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "version": 0,
+                    "props": {
+                      "direction": "column",
+                      "justify": "center",
+                      "style": {
+                        "backgroundColor": "#f8fafc",
+                        "border": "1px solid #c7d0da",
+                        "borderLeft": "6px solid #d97706",
+                        "borderRadius": "4px",
+                        "padding": "12px"
+                      }
+                    },
+                    "meta": {
+                      "name": "PredictedPeakCard"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "PREDICTED PEAK",
+                          "style": {
+                            "fontSize": "13px",
+                            "fontWeight": "700",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "PredictedPeakCardLabel"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "1.18 MW",
+                          "style": {
+                            "fontSize": "42px",
+                            "fontWeight": "800",
+                            "color": "#1f2937"
+                          }
+                        },
+                        "meta": {
+                          "name": "PredictedPeakCardValue"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "Today at 14:30",
+                          "style": {
+                            "fontSize": "12px",
+                            "fontWeight": "500",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "PredictedPeakCardNote"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "version": 0,
+                    "props": {
+                      "direction": "column",
+                      "justify": "center",
+                      "style": {
+                        "backgroundColor": "#f8fafc",
+                        "border": "1px solid #c7d0da",
+                        "borderLeft": "6px solid #16a34a",
+                        "borderRadius": "4px",
+                        "padding": "12px"
+                      }
+                    },
+                    "meta": {
+                      "name": "ForecastEnergyCard"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "FORECAST ENERGY",
+                          "style": {
+                            "fontSize": "13px",
+                            "fontWeight": "700",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "ForecastEnergyCardLabel"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "18.7 MWh",
+                          "style": {
+                            "fontSize": "42px",
+                            "fontWeight": "800",
+                            "color": "#1f2937"
+                          }
+                        },
+                        "meta": {
+                          "name": "ForecastEnergyCardValue"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "Next 24 hours",
+                          "style": {
+                            "fontSize": "12px",
+                            "fontWeight": "500",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "ForecastEnergyCardNote"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "version": 0,
+                    "props": {
+                      "direction": "column",
+                      "justify": "center",
+                      "style": {
+                        "backgroundColor": "#f8fafc",
+                        "border": "1px solid #c7d0da",
+                        "borderLeft": "6px solid #7c3aed",
+                        "borderRadius": "4px",
+                        "padding": "12px"
+                      }
+                    },
+                    "meta": {
+                      "name": "PeakRiskCard"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "PEAK RISK",
+                          "style": {
+                            "fontSize": "13px",
+                            "fontWeight": "700",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "PeakRiskCardLabel"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "MEDIUM",
+                          "style": {
+                            "fontSize": "34px",
+                            "fontWeight": "800",
+                            "color": "#1f2937"
+                          }
+                        },
+                        "meta": {
+                          "name": "PeakRiskCardValue"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "78% confidence",
+                          "style": {
+                            "fontSize": "12px",
+                            "fontWeight": "500",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "PeakRiskCardNote"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "version": 0,
+                "props": {
+                  "direction": "column",
+                  "gap": "8px",
+                  "style": {
+                    "backgroundColor": "#f8fafc",
+                    "border": "1px solid #c7d0da",
+                    "borderRadius": "6px",
+                    "padding": "12px"
+                  }
+                },
+                "meta": {
+                  "name": "ForecastChartPanel"
+                },
+                "position": {
+                  "grow": 2
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "version": 0,
+                    "props": {
+                      "text": "ACTUAL VS PREDICTED ENERGY DEMAND",
+                      "style": {
+                        "fontSize": "15px",
+                        "fontWeight": "800",
+                        "color": "#1f2937",
+                        "borderBottom": "1px solid #c7d0da",
+                        "paddingBottom": "6px"
+                      }
+                    },
+                    "meta": {
+                      "name": "ForecastChartSubheader"
+                    },
+                    "position": {
+                      "basis": "34px"
+                    }
+                  },
+                  {
+                    "type": "ia.chart.xy",
+                    "version": 0,
+                    "props": {
+                      "dataSources": {
+                        "example": [
+                          {
+                            "t_stamp": "06:00",
+                            "actual_kw": 610,
+                            "predicted_kw": null,
+                            "upper_kw": null,
+                            "lower_kw": null
+                          },
+                          {
+                            "t_stamp": "07:00",
+                            "actual_kw": 690,
+                            "predicted_kw": null,
+                            "upper_kw": null,
+                            "lower_kw": null
+                          },
+                          {
+                            "t_stamp": "08:00",
+                            "actual_kw": 775,
+                            "predicted_kw": null,
+                            "upper_kw": null,
+                            "lower_kw": null
+                          },
+                          {
+                            "t_stamp": "09:00",
+                            "actual_kw": 842,
+                            "predicted_kw": 855,
+                            "upper_kw": 910,
+                            "lower_kw": 798
+                          },
+                          {
+                            "t_stamp": "10:00",
+                            "actual_kw": null,
+                            "predicted_kw": 920,
+                            "upper_kw": 985,
+                            "lower_kw": 862
+                          },
+                          {
+                            "t_stamp": "11:00",
+                            "actual_kw": null,
+                            "predicted_kw": 1010,
+                            "upper_kw": 1095,
+                            "lower_kw": 942
+                          },
+                          {
+                            "t_stamp": "12:00",
+                            "actual_kw": null,
+                            "predicted_kw": 1105,
+                            "upper_kw": 1190,
+                            "lower_kw": 1018
+                          },
+                          {
+                            "t_stamp": "13:00",
+                            "actual_kw": null,
+                            "predicted_kw": 1160,
+                            "upper_kw": 1260,
+                            "lower_kw": 1065
+                          },
+                          {
+                            "t_stamp": "14:00",
+                            "actual_kw": null,
+                            "predicted_kw": 1180,
+                            "upper_kw": 1290,
+                            "lower_kw": 1072
+                          },
+                          {
+                            "t_stamp": "15:00",
+                            "actual_kw": null,
+                            "predicted_kw": 1135,
+                            "upper_kw": 1235,
+                            "lower_kw": 1040
+                          }
+                        ]
+                      },
+                      "style": {
+                        "backgroundColor": "#ffffff"
+                      }
+                    },
+                    "meta": {
+                      "name": "ActualVsForecastTrend"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "custom": {
+                      "bindingNote": "Bind XY chart data to a dataset with actual_kw, predicted_kw, upper_kw, and lower_kw. Use actual as solid line, prediction as dashed line, and upper/lower as confidence band references."
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "version": 0,
+                "props": {
+                  "direction": "row",
+                  "gap": "12px"
+                },
+                "meta": {
+                  "name": "BottomAggregateTables"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "version": 0,
+                    "props": {
+                      "direction": "column",
+                      "gap": "8px",
+                      "style": {
+                        "backgroundColor": "#f8fafc",
+                        "border": "1px solid #c7d0da",
+                        "borderRadius": "6px",
+                        "padding": "10px"
+                      }
+                    },
+                    "meta": {
+                      "name": "ForecastBucketGroup"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "FORECAST BUCKETS",
+                          "style": {
+                            "fontSize": "14px",
+                            "fontWeight": "800",
+                            "color": "#1f2937",
+                            "borderBottom": "1px solid #c7d0da",
+                            "paddingBottom": "6px"
+                          }
+                        },
+                        "meta": {
+                          "name": "ForecastBucketSubheader"
+                        },
+                        "position": {
+                          "basis": "32px"
+                        }
+                      },
+                      {
+                        "type": "ia.display.table",
+                        "version": 0,
+                        "props": {
+                          "data": [
+                            {
+                              "Window": "Next 4 hr",
+                              "PredEnergy": "4.15 MWh",
+                              "Peak": "1.18 MW",
+                              "Confidence": "82%",
+                              "Risk": "Medium"
+                            },
+                            {
+                              "Window": "Next 8 hr",
+                              "PredEnergy": "8.92 MWh",
+                              "Peak": "1.18 MW",
+                              "Confidence": "79%",
+                              "Risk": "Medium"
+                            },
+                            {
+                              "Window": "Next 24 hr",
+                              "PredEnergy": "18.70 MWh",
+                              "Peak": "1.18 MW",
+                              "Confidence": "78%",
+                              "Risk": "Medium"
+                            },
+                            {
+                              "Window": "Next 7 d",
+                              "PredEnergy": "126.40 MWh",
+                              "Peak": "1.31 MW",
+                              "Confidence": "71%",
+                              "Risk": "High"
+                            }
+                          ],
+                          "columns": [
+                            {
+                              "field": "Window",
+                              "header": {
+                                "title": "Window"
+                              }
+                            },
+                            {
+                              "field": "PredEnergy",
+                              "header": {
+                                "title": "Pred Energy"
+                              }
+                            },
+                            {
+                              "field": "Peak",
+                              "header": {
+                                "title": "Peak"
+                              }
+                            },
+                            {
+                              "field": "Confidence",
+                              "header": {
+                                "title": "Confidence"
+                              }
+                            },
+                            {
+                              "field": "Risk",
+                              "header": {
+                                "title": "Risk"
+                              }
+                            }
+                          ],
+                          "style": {
+                            "backgroundColor": "#ffffff",
+                            "color": "#1f2937"
+                          }
+                        },
+                        "meta": {
+                          "name": "ForecastBucketTable"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "custom": {
+                          "bindingNote": "Bind to forecast aggregate named query or ML inference output table."
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "version": 0,
+                    "props": {
+                      "direction": "column",
+                      "gap": "8px",
+                      "style": {
+                        "backgroundColor": "#f8fafc",
+                        "border": "1px solid #c7d0da",
+                        "borderRadius": "6px",
+                        "padding": "10px"
+                      }
+                    },
+                    "meta": {
+                      "name": "DriversGroup"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "TOP FORECAST DRIVERS",
+                          "style": {
+                            "fontSize": "14px",
+                            "fontWeight": "800",
+                            "color": "#1f2937",
+                            "borderBottom": "1px solid #c7d0da",
+                            "paddingBottom": "6px"
+                          }
+                        },
+                        "meta": {
+                          "name": "DriversSubheader"
+                        },
+                        "position": {
+                          "basis": "32px"
+                        }
+                      },
+                      {
+                        "type": "ia.display.table",
+                        "version": 0,
+                        "props": {
+                          "data": [
+                            {
+                              "Driver": "Production schedule",
+                              "Impact": "+18%",
+                              "Direction": "Higher load"
+                            },
+                            {
+                              "Driver": "Outdoor temperature",
+                              "Impact": "+11%",
+                              "Direction": "HVAC increase"
+                            },
+                            {
+                              "Driver": "Compressor runtime",
+                              "Impact": "+8%",
+                              "Direction": "Higher load"
+                            },
+                            {
+                              "Driver": "Shift start ramp",
+                              "Impact": "+6%",
+                              "Direction": "Morning ramp"
+                            }
+                          ],
+                          "columns": [
+                            {
+                              "field": "Driver",
+                              "header": {
+                                "title": "Driver"
+                              }
+                            },
+                            {
+                              "field": "Impact",
+                              "header": {
+                                "title": "Impact"
+                              }
+                            },
+                            {
+                              "field": "Direction",
+                              "header": {
+                                "title": "Direction"
+                              }
+                            }
+                          ],
+                          "style": {
+                            "backgroundColor": "#ffffff",
+                            "color": "#1f2937"
+                          }
+                        },
+                        "meta": {
+                          "name": "ForecastDriversTable"
+                        },
+                        "position": {
+                          "grow": 1
+                        },
+                        "custom": {
+                          "bindingNote": "Bind to model explainability output such as SHAP-style ranked drivers or rules-based contributors."
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "ia.container.flex",
+            "version": 0,
+            "props": {
+              "direction": "column",
+              "gap": "12px",
+              "style": {
+                "backgroundColor": "#ffffff",
+                "border": "1px solid #c7d0da",
+                "borderRadius": "6px",
+                "padding": "14px"
+              }
+            },
+            "meta": {
+              "name": "RealtimeModelStatusSection"
+            },
+            "position": {
+              "grow": 1,
+              "basis": "34%"
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "version": 0,
+                "props": {
+                  "text": "CURRENT MODEL / REAL-TIME STATUS",
+                  "style": {
+                    "fontSize": "18px",
+                    "fontWeight": "800",
+                    "color": "#1f2937",
+                    "borderBottom": "2px solid #16a34a",
+                    "paddingBottom": "8px"
+                  }
+                },
+                "meta": {
+                  "name": "RealtimeSectionTitle"
+                },
+                "position": {
+                  "basis": "42px"
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "version": 0,
+                "props": {
+                  "direction": "column",
+                  "alignItems": "center",
+                  "justify": "center",
+                  "style": {
+                    "backgroundColor": "#f8fafc",
+                    "border": "1px solid #c7d0da",
+                    "borderRadius": "6px",
+                    "padding": "18px"
+                  }
+                },
+                "meta": {
+                  "name": "ModelStatusPanel"
+                },
+                "position": {
+                  "basis": "260px"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "version": 0,
+                    "props": {
+                      "text": "ACTIVE MODEL: EnergyTS-v3.4",
+                      "style": {
+                        "fontSize": "21px",
+                        "fontWeight": "800",
+                        "color": "#1f2937"
+                      }
+                    },
+                    "meta": {
+                      "name": "ActiveModelLabel"
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "version": 0,
+                    "props": {
+                      "text": "NEXT HOUR: 920 kW",
+                      "style": {
+                        "fontSize": "30px",
+                        "fontWeight": "800",
+                        "color": "#1f2937",
+                        "marginTop": "16px"
+                      }
+                    },
+                    "meta": {
+                      "name": "ForecastNowValue"
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "version": 0,
+                    "props": {
+                      "direction": "row",
+                      "justify": "center",
+                      "alignItems": "center",
+                      "gap": "18px",
+                      "style": {
+                        "marginTop": "14px",
+                        "padding": "8px 10px",
+                        "backgroundColor": "#ffffff",
+                        "border": "1px solid #c7d0da",
+                        "borderRadius": "999px"
+                      }
+                    },
+                    "meta": {
+                      "name": "RealtimeHealthDotIndicators"
+                    },
+                    "position": {
+                      "basis": "56px"
+                    },
+                    "children": [
+                      {
+                        "type": "ia.container.flex",
+                        "version": 0,
+                        "props": {
+                          "direction": "row",
+                          "alignItems": "center",
+                          "gap": "6px"
+                        },
+                        "meta": {
+                          "name": "DataQualityDotGroup"
+                        },
+                        "children": [
+                          {
+                            "type": "ia.display.label",
+                            "version": 0,
+                            "props": {
+                              "text": "\u25cf",
+                              "style": {
+                                "fontSize": "34px",
+                                "fontWeight": "800",
+                                "color": "#16a34a",
+                                "lineHeight": "28px",
+                                "textShadow": "0 0 6px rgba(22, 163, 74, 0.55)"
+                              }
+                            },
+                            "meta": {
+                              "name": "DataQualityDot"
+                            }
+                          },
+                          {
+                            "type": "ia.display.label",
+                            "version": 0,
+                            "props": {
+                              "text": "DATA",
+                              "style": {
+                                "fontSize": "13px",
+                                "fontWeight": "700",
+                                "color": "#1f2937"
+                              }
+                            },
+                            "meta": {
+                              "name": "DataQualityDotLabel"
+                            }
+                          }
+                        ],
+                        "custom": {
+                          "bindingNote": "Dot green if required meter, weather, schedule, and production features are fresh."
+                        }
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "version": 0,
+                        "props": {
+                          "direction": "row",
+                          "alignItems": "center",
+                          "gap": "6px"
+                        },
+                        "meta": {
+                          "name": "ModelServingDotGroup"
+                        },
+                        "children": [
+                          {
+                            "type": "ia.display.label",
+                            "version": 0,
+                            "props": {
+                              "text": "\u25cf",
+                              "style": {
+                                "fontSize": "34px",
+                                "fontWeight": "800",
+                                "color": "#16a34a",
+                                "lineHeight": "28px",
+                                "textShadow": "0 0 6px rgba(22, 163, 74, 0.55)"
+                              }
+                            },
+                            "meta": {
+                              "name": "ModelServingDot"
+                            }
+                          },
+                          {
+                            "type": "ia.display.label",
+                            "version": 0,
+                            "props": {
+                              "text": "MODEL",
+                              "style": {
+                                "fontSize": "13px",
+                                "fontWeight": "700",
+                                "color": "#1f2937"
+                              }
+                            },
+                            "meta": {
+                              "name": "ModelServingDotLabel"
+                            }
+                          }
+                        ],
+                        "custom": {
+                          "bindingNote": "Dot green if inference service is online and responding inside SLA."
+                        }
+                      },
+                      {
+                        "type": "ia.container.flex",
+                        "version": 0,
+                        "props": {
+                          "direction": "row",
+                          "alignItems": "center",
+                          "gap": "6px"
+                        },
+                        "meta": {
+                          "name": "ForecastRiskDotGroup"
+                        },
+                        "children": [
+                          {
+                            "type": "ia.display.label",
+                            "version": 0,
+                            "props": {
+                              "text": "\u25cf",
+                              "style": {
+                                "fontSize": "34px",
+                                "fontWeight": "800",
+                                "color": "#d97706",
+                                "lineHeight": "28px",
+                                "textShadow": "0 0 6px rgba(217, 119, 6, 0.55)"
+                              }
+                            },
+                            "meta": {
+                              "name": "ForecastRiskDot"
+                            }
+                          },
+                          {
+                            "type": "ia.display.label",
+                            "version": 0,
+                            "props": {
+                              "text": "RISK",
+                              "style": {
+                                "fontSize": "13px",
+                                "fontWeight": "700",
+                                "color": "#1f2937"
+                              }
+                            },
+                            "meta": {
+                              "name": "ForecastRiskDotLabel"
+                            }
+                          }
+                        ],
+                        "custom": {
+                          "bindingNote": "Dot green for low risk, amber for medium peak risk, red for high peak or model confidence below threshold."
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "version": 0,
+                    "props": {
+                      "text": "Last inference: 2026-06-26 09:45:12",
+                      "style": {
+                        "fontSize": "13px",
+                        "color": "#52606d",
+                        "marginTop": "10px"
+                      }
+                    },
+                    "meta": {
+                      "name": "LastInferenceTimestamp"
+                    },
+                    "custom": {
+                      "bindingNote": "Bind to latest forecast generation timestamp."
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "version": 0,
+                "props": {
+                  "direction": "row",
+                  "gap": "8px"
+                },
+                "meta": {
+                  "name": "ModelQualityCards"
+                },
+                "position": {
+                  "basis": "120px"
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "version": 0,
+                    "props": {
+                      "direction": "column",
+                      "justify": "center",
+                      "style": {
+                        "backgroundColor": "#f8fafc",
+                        "border": "1px solid #c7d0da",
+                        "borderLeft": "6px solid #16a34a",
+                        "borderRadius": "4px",
+                        "padding": "12px"
+                      }
+                    },
+                    "meta": {
+                      "name": "MapeCard"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "MAPE",
+                          "style": {
+                            "fontSize": "13px",
+                            "fontWeight": "700",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "MapeCardLabel"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "6.8%",
+                          "style": {
+                            "fontSize": "26px",
+                            "fontWeight": "800",
+                            "color": "#1f2937"
+                          }
+                        },
+                        "meta": {
+                          "name": "MapeCardValue"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "Last 7 days",
+                          "style": {
+                            "fontSize": "12px",
+                            "fontWeight": "500",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "MapeCardNote"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "version": 0,
+                    "props": {
+                      "direction": "column",
+                      "justify": "center",
+                      "style": {
+                        "backgroundColor": "#f8fafc",
+                        "border": "1px solid #c7d0da",
+                        "borderLeft": "6px solid #2563eb",
+                        "borderRadius": "4px",
+                        "padding": "12px"
+                      }
+                    },
+                    "meta": {
+                      "name": "RmseCard"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "RMSE",
+                          "style": {
+                            "fontSize": "13px",
+                            "fontWeight": "700",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "RmseCardLabel"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "74 kW",
+                          "style": {
+                            "fontSize": "26px",
+                            "fontWeight": "800",
+                            "color": "#1f2937"
+                          }
+                        },
+                        "meta": {
+                          "name": "RmseCardValue"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "Last 7 days",
+                          "style": {
+                            "fontSize": "12px",
+                            "fontWeight": "500",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "RmseCardNote"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "version": 0,
+                    "props": {
+                      "direction": "column",
+                      "justify": "center",
+                      "style": {
+                        "backgroundColor": "#f8fafc",
+                        "border": "1px solid #c7d0da",
+                        "borderLeft": "6px solid #16a34a",
+                        "borderRadius": "4px",
+                        "padding": "12px"
+                      }
+                    },
+                    "meta": {
+                      "name": "DriftCard"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "DRIFT",
+                          "style": {
+                            "fontSize": "13px",
+                            "fontWeight": "700",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "DriftCardLabel"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "LOW",
+                          "style": {
+                            "fontSize": "26px",
+                            "fontWeight": "800",
+                            "color": "#1f2937"
+                          }
+                        },
+                        "meta": {
+                          "name": "DriftCardValue"
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "Stable inputs",
+                          "style": {
+                            "fontSize": "12px",
+                            "fontWeight": "500",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "DriftCardNote"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "ia.container.flex",
+                "version": 0,
+                "props": {
+                  "direction": "column",
+                  "gap": "8px",
+                  "style": {
+                    "backgroundColor": "#f8fafc",
+                    "border": "1px solid #c7d0da",
+                    "borderRadius": "6px",
+                    "padding": "12px"
+                  }
+                },
+                "meta": {
+                  "name": "ControlRecommendations"
+                },
+                "position": {
+                  "basis": "170px"
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "version": 0,
+                    "props": {
+                      "text": "ENERGY ACTION RECOMMENDATIONS",
+                      "style": {
+                        "fontSize": "15px",
+                        "fontWeight": "800",
+                        "color": "#1f2937",
+                        "borderBottom": "1px solid #c7d0da",
+                        "paddingBottom": "6px"
+                      }
+                    },
+                    "meta": {
+                      "name": "RecommendationTitle"
+                    },
+                    "position": {
+                      "basis": "32px"
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "version": 0,
+                    "props": {
+                      "text": "1. Stagger non-critical compressor loads between 13:30 - 15:00.",
+                      "style": {
+                        "fontSize": "14px",
+                        "fontWeight": "600",
+                        "color": "#1f2937"
+                      }
+                    },
+                    "meta": {
+                      "name": "Recommendation1"
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "version": 0,
+                    "props": {
+                      "text": "2. Pre-cool HVAC zone before predicted 14:30 peak.",
+                      "style": {
+                        "fontSize": "14px",
+                        "fontWeight": "600",
+                        "color": "#1f2937"
+                      }
+                    },
+                    "meta": {
+                      "name": "Recommendation2"
+                    }
+                  },
+                  {
+                    "type": "ia.display.label",
+                    "version": 0,
+                    "props": {
+                      "text": "3. Alert production if forecast exceeds 1.25 MW threshold.",
+                      "style": {
+                        "fontSize": "14px",
+                        "fontWeight": "600",
+                        "color": "#1f2937"
+                      }
+                    },
+                    "meta": {
+                      "name": "Recommendation3"
+                    }
+                  }
+                ],
+                "custom": {
+                  "bindingNote": "Bind recommendations to rules engine using forecast peak, tariff window, and controllable loads."
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "version": 0,
+                "props": {
+                  "direction": "column",
+                  "gap": "8px",
+                  "style": {
+                    "backgroundColor": "#f8fafc",
+                    "border": "1px solid #c7d0da",
+                    "borderRadius": "6px",
+                    "padding": "12px"
+                  }
+                },
+                "meta": {
+                  "name": "RealtimeFeatureTableGroup"
+                },
+                "position": {
+                  "grow": 1
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "version": 0,
+                    "props": {
+                      "text": "LIVE FEATURE SNAPSHOT",
+                      "style": {
+                        "fontSize": "15px",
+                        "fontWeight": "800",
+                        "color": "#1f2937"
+                      }
+                    },
+                    "meta": {
+                      "name": "FeatureTableTitle"
+                    }
+                  },
+                  {
+                    "type": "ia.display.table",
+                    "version": 0,
+                    "props": {
+                      "data": [
+                        {
+                          "Feature": "Outdoor temp",
+                          "Value": "84\u00b0F",
+                          "Freshness": "18s"
+                        },
+                        {
+                          "Feature": "Production rate",
+                          "Value": "72 units/hr",
+                          "Freshness": "3s"
+                        },
+                        {
+                          "Feature": "Compressor load",
+                          "Value": "188 kW",
+                          "Freshness": "2s"
+                        },
+                        {
+                          "Feature": "Tariff period",
+                          "Value": "On-peak",
+                          "Freshness": "Live"
+                        }
+                      ],
+                      "columns": [
+                        {
+                          "field": "Feature",
+                          "header": {
+                            "title": "Feature"
+                          }
+                        },
+                        {
+                          "field": "Value",
+                          "header": {
+                            "title": "Value"
+                          }
+                        },
+                        {
+                          "field": "Freshness",
+                          "header": {
+                            "title": "Freshness"
+                          }
+                        }
+                      ],
+                      "style": {
+                        "backgroundColor": "#ffffff",
+                        "color": "#1f2937"
+                      }
+                    },
+                    "meta": {
+                      "name": "LiveFeatureSnapshotTable"
+                    },
+                    "position": {
+                      "grow": 1
+                    },
+                    "custom": {
+                      "bindingNote": "Bind to most recent model feature vector used for prediction."
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ia.container.flex",
+        "version": 0,
+        "props": {
+          "direction": "row",
+          "alignItems": "center",
+          "justify": "space-between",
+          "style": {
+            "backgroundColor": "#e1e7ef",
+            "border": "1px solid #c7d0da",
+            "borderRadius": "6px",
+            "padding": "8px 12px",
+            "fontSize": "12px",
+            "color": "#52606d"
+          }
+        },
+        "meta": {
+          "name": "Footer"
+        },
+        "position": {
+          "basis": "40px"
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "HMI Strategy: actuals and predictions separated visually, confidence/risk visible near forecast, green = healthy/within target, amber = attention, red = actionable energy risk or stale model data."
+            },
+            "meta": {
+              "name": "DesignStrategyNote"
+            },
+            "position": {
+              "grow": 1
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "version": 0,
+            "props": {
+              "text": "Data freshness target: meter < 5s | forecast refresh 5-15 min | model metrics daily"
+            },
+            "meta": {
+              "name": "RefreshNote"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
