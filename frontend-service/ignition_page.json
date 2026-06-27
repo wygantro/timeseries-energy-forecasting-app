@@ -536,7 +536,7 @@
                     "type": "ia.display.label",
                     "version": 0,
                     "props": {
-                      "text": "ACTUAL VS PREDICTED ENERGY DEMAND",
+                      "text": "ENERGY TIME-SERIES GRAPH \u2014 ACTUAL / FORECAST / CONFIDENCE",
                       "style": {
                         "fontSize": "15px",
                         "fontWeight": "800",
@@ -557,92 +557,294 @@
                     "version": 0,
                     "props": {
                       "dataSources": {
-                        "example": [
+                        "energyPrediction": [
                           {
-                            "t_stamp": "06:00",
+                            "time": "06:00",
                             "actual_kw": 610,
-                            "predicted_kw": null,
+                            "forecast_kw": null,
                             "upper_kw": null,
-                            "lower_kw": null
+                            "lower_kw": null,
+                            "tariff_limit_kw": 1200
                           },
                           {
-                            "t_stamp": "07:00",
+                            "time": "07:00",
                             "actual_kw": 690,
-                            "predicted_kw": null,
+                            "forecast_kw": null,
                             "upper_kw": null,
-                            "lower_kw": null
+                            "lower_kw": null,
+                            "tariff_limit_kw": 1200
                           },
                           {
-                            "t_stamp": "08:00",
+                            "time": "08:00",
                             "actual_kw": 775,
-                            "predicted_kw": null,
+                            "forecast_kw": null,
                             "upper_kw": null,
-                            "lower_kw": null
+                            "lower_kw": null,
+                            "tariff_limit_kw": 1200
                           },
                           {
-                            "t_stamp": "09:00",
+                            "time": "09:00",
                             "actual_kw": 842,
-                            "predicted_kw": 855,
+                            "forecast_kw": 855,
                             "upper_kw": 910,
-                            "lower_kw": 798
+                            "lower_kw": 798,
+                            "tariff_limit_kw": 1200
                           },
                           {
-                            "t_stamp": "10:00",
+                            "time": "10:00",
                             "actual_kw": null,
-                            "predicted_kw": 920,
+                            "forecast_kw": 920,
                             "upper_kw": 985,
-                            "lower_kw": 862
+                            "lower_kw": 862,
+                            "tariff_limit_kw": 1200
                           },
                           {
-                            "t_stamp": "11:00",
+                            "time": "11:00",
                             "actual_kw": null,
-                            "predicted_kw": 1010,
+                            "forecast_kw": 1010,
                             "upper_kw": 1095,
-                            "lower_kw": 942
+                            "lower_kw": 942,
+                            "tariff_limit_kw": 1200
                           },
                           {
-                            "t_stamp": "12:00",
+                            "time": "12:00",
                             "actual_kw": null,
-                            "predicted_kw": 1105,
+                            "forecast_kw": 1105,
                             "upper_kw": 1190,
-                            "lower_kw": 1018
+                            "lower_kw": 1018,
+                            "tariff_limit_kw": 1200
                           },
                           {
-                            "t_stamp": "13:00",
+                            "time": "13:00",
                             "actual_kw": null,
-                            "predicted_kw": 1160,
+                            "forecast_kw": 1160,
                             "upper_kw": 1260,
-                            "lower_kw": 1065
+                            "lower_kw": 1065,
+                            "tariff_limit_kw": 1200
                           },
                           {
-                            "t_stamp": "14:00",
+                            "time": "14:00",
                             "actual_kw": null,
-                            "predicted_kw": 1180,
+                            "forecast_kw": 1180,
                             "upper_kw": 1290,
-                            "lower_kw": 1072
+                            "lower_kw": 1072,
+                            "tariff_limit_kw": 1200
                           },
                           {
-                            "t_stamp": "15:00",
+                            "time": "15:00",
                             "actual_kw": null,
-                            "predicted_kw": 1135,
+                            "forecast_kw": 1135,
                             "upper_kw": 1235,
-                            "lower_kw": 1040
+                            "lower_kw": 1040,
+                            "tariff_limit_kw": 1200
+                          },
+                          {
+                            "time": "16:00",
+                            "actual_kw": null,
+                            "forecast_kw": 1040,
+                            "upper_kw": 1135,
+                            "lower_kw": 960,
+                            "tariff_limit_kw": 1200
+                          },
+                          {
+                            "time": "17:00",
+                            "actual_kw": null,
+                            "forecast_kw": 930,
+                            "upper_kw": 1015,
+                            "lower_kw": 850,
+                            "tariff_limit_kw": 1200
                           }
                         ]
+                      },
+                      "xAxes": [
+                        {
+                          "name": "timeAxis",
+                          "label": {
+                            "text": "Time"
+                          },
+                          "data": {
+                            "source": "energyPrediction",
+                            "x": "time"
+                          }
+                        }
+                      ],
+                      "yAxes": [
+                        {
+                          "name": "kwAxis",
+                          "label": {
+                            "text": "Demand (kW)"
+                          },
+                          "render": "value",
+                          "range": {
+                            "auto": true
+                          }
+                        }
+                      ],
+                      "series": [
+                        {
+                          "name": "Actual Demand",
+                          "type": "line",
+                          "xAxis": "timeAxis",
+                          "yAxis": "kwAxis",
+                          "data": {
+                            "source": "energyPrediction",
+                            "x": "time",
+                            "y": "actual_kw"
+                          },
+                          "style": {
+                            "stroke": {
+                              "color": "#2563eb",
+                              "width": 3
+                            }
+                          }
+                        },
+                        {
+                          "name": "ML Forecast",
+                          "type": "line",
+                          "xAxis": "timeAxis",
+                          "yAxis": "kwAxis",
+                          "data": {
+                            "source": "energyPrediction",
+                            "x": "time",
+                            "y": "forecast_kw"
+                          },
+                          "style": {
+                            "stroke": {
+                              "color": "#16a34a",
+                              "width": 3,
+                              "dashArray": "6 4"
+                            }
+                          }
+                        },
+                        {
+                          "name": "Upper Confidence",
+                          "type": "line",
+                          "xAxis": "timeAxis",
+                          "yAxis": "kwAxis",
+                          "data": {
+                            "source": "energyPrediction",
+                            "x": "time",
+                            "y": "upper_kw"
+                          },
+                          "style": {
+                            "stroke": {
+                              "color": "#d97706",
+                              "width": 2,
+                              "dashArray": "3 3"
+                            }
+                          }
+                        },
+                        {
+                          "name": "Lower Confidence",
+                          "type": "line",
+                          "xAxis": "timeAxis",
+                          "yAxis": "kwAxis",
+                          "data": {
+                            "source": "energyPrediction",
+                            "x": "time",
+                            "y": "lower_kw"
+                          },
+                          "style": {
+                            "stroke": {
+                              "color": "#d97706",
+                              "width": 2,
+                              "dashArray": "3 3"
+                            }
+                          }
+                        },
+                        {
+                          "name": "Peak Limit",
+                          "type": "line",
+                          "xAxis": "timeAxis",
+                          "yAxis": "kwAxis",
+                          "data": {
+                            "source": "energyPrediction",
+                            "x": "time",
+                            "y": "tariff_limit_kw"
+                          },
+                          "style": {
+                            "stroke": {
+                              "color": "#dc2626",
+                              "width": 2,
+                              "dashArray": "8 4"
+                            }
+                          }
+                        }
+                      ],
+                      "legend": {
+                        "enabled": true
                       },
                       "style": {
                         "backgroundColor": "#ffffff"
                       }
                     },
                     "meta": {
-                      "name": "ActualVsForecastTrend"
+                      "name": "EnergyTimeSeriesPredictionGraph"
                     },
                     "position": {
                       "grow": 1
                     },
                     "custom": {
-                      "bindingNote": "Bind XY chart data to a dataset with actual_kw, predicted_kw, upper_kw, and lower_kw. Use actual as solid line, prediction as dashed line, and upper/lower as confidence band references."
+                      "bindingNote": "Time-series graph: bind dataSources.energyPrediction to historian + ML forecast output. actual_kw = measured demand, forecast_kw = predicted demand, upper_kw/lower_kw = confidence band, tariff_limit_kw = demand threshold or peak demand alarm limit."
                     }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "version": 0,
+                    "props": {
+                      "direction": "row",
+                      "alignItems": "center",
+                      "justify": "space-between",
+                      "gap": "8px",
+                      "style": {
+                        "backgroundColor": "#ffffff",
+                        "border": "1px solid #c7d0da",
+                        "borderRadius": "4px",
+                        "padding": "6px 10px",
+                        "fontSize": "12px"
+                      }
+                    },
+                    "meta": {
+                      "name": "TimeSeriesGraphLegend"
+                    },
+                    "position": {
+                      "basis": "34px"
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "Blue = actual demand | Green dashed = ML forecast | Amber dashed = confidence range | Red dashed = peak limit",
+                          "style": {
+                            "fontSize": "12px",
+                            "fontWeight": "600",
+                            "color": "#52606d"
+                          }
+                        },
+                        "meta": {
+                          "name": "TimeSeriesLegendText"
+                        },
+                        "position": {
+                          "grow": 1
+                        }
+                      },
+                      {
+                        "type": "ia.display.label",
+                        "version": 0,
+                        "props": {
+                          "text": "Forecast horizon: Next 24 Hours",
+                          "style": {
+                            "fontSize": "12px",
+                            "fontWeight": "700",
+                            "color": "#1f2937"
+                          }
+                        },
+                        "meta": {
+                          "name": "ForecastHorizonLegendValue"
+                        }
+                      }
+                    ]
                   }
                 ]
               },
