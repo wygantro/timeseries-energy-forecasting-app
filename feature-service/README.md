@@ -1,5 +1,10 @@
 # feature-service container build and deploy
 
+
+
+# DB Credentials:
+PW: o+r/0_I)z4{xN<<A
+
 ## Local image build and run on Docker
 
 1. Build docker file

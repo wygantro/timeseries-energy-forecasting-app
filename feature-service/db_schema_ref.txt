@@ -1,0 +1,34 @@
+CREATE TABLE energy_locations (
+    iso_code VARCHAR(20) PRIMARY KEY,          -- CAISO, ERCOT, PJM, etc.
+
+    location_name VARCHAR(255),                -- e.g. California ISO
+    description TEXT,
+
+    region_name VARCHAR(255),                  -- e.g. California
+    latitude NUMERIC(9,6),
+    longitude NUMERIC(9,6),
+
+    source VARCHAR(100),                       -- GridStatus, CAISO API, ERCOT API
+
+    active BOOLEAN NOT NULL DEFAULT TRUE
+);
+
+
+CREATE TABLE energy_timeseries (
+    iso_code VARCHAR(20) NOT NULL
+        REFERENCES energy_locations(iso_code),
+
+    interval_start_utc TIMESTAMPTZ NOT NULL,
+    interval_end_utc TIMESTAMPTZ NOT NULL,
+
+    load_mw NUMERIC(14,4),                     -- System load (MW)
+    price_usd_mwh NUMERIC(14,4),               -- Market price ($/MWh)
+
+    ingested_at_utc TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+
+    PRIMARY KEY (
+        iso_code,
+        interval_start_utc,
+        interval_end_utc
+    )
+);
