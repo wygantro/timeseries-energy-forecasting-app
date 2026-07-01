@@ -1,0 +1,159 @@
+INSERT INTO energy_locations
+(
+    iso_code,
+    location_name,
+    description,
+    region_name,
+    latitude,
+    longitude,
+    source,
+    active
+)
+VALUES
+
+-- Regional Transmission Organizations (RTOs) / ISOs
+
+(
+    'CAISO',
+    'California Independent System Operator',
+    'Operates the bulk electric grid and wholesale electricity market for most of California and parts of Nevada.',
+    'California',
+    38.581572,
+    -121.494400,
+    'GridStatus',
+    TRUE
+),
+
+(
+    'ERCOT',
+    'Electric Reliability Council of Texas',
+    'Operates the electric grid and wholesale electricity market for most of Texas.',
+    'Texas',
+    30.267153,
+    -97.743061,
+    'GridStatus',
+    TRUE
+),
+
+(
+    'PJM',
+    'PJM Interconnection',
+    'Regional transmission organization serving the Mid-Atlantic and portions of the Midwest.',
+    'Mid-Atlantic',
+    39.952583,
+    -75.165222,
+    'GridStatus',
+    TRUE
+),
+
+(
+    'MISO',
+    'Midcontinent Independent System Operator',
+    'Regional transmission organization serving the central United States and Manitoba.',
+    'Midwest',
+    39.768403,
+    -86.158068,
+    'GridStatus',
+    TRUE
+),
+
+(
+    'SPP',
+    'Southwest Power Pool',
+    'Regional transmission organization serving the central United States.',
+    'Great Plains',
+    35.467560,
+    -97.516428,
+    'GridStatus',
+    TRUE
+),
+
+(
+    'NYISO',
+    'New York Independent System Operator',
+    'Operates New York State''s bulk electric grid and wholesale electricity markets.',
+    'New York',
+    42.652580,
+    -73.756233,
+    'GridStatus',
+    TRUE
+),
+
+(
+    'ISONE',
+    'ISO New England',
+    'Operates the bulk electric power system and wholesale markets in New England.',
+    'New England',
+    42.360082,
+    -71.058880,
+    'GridStatus',
+    TRUE
+),
+
+-- Major Non-RTO Balancing Authorities
+
+(
+    'BPA',
+    'Bonneville Power Administration',
+    'Federal power marketing administration operating the transmission grid throughout the Pacific Northwest.',
+    'Pacific Northwest',
+    45.515232,
+    -122.678385,
+    'GridStatus',
+    TRUE
+),
+
+(
+    'TVA',
+    'Tennessee Valley Authority',
+    'Federal utility serving Tennessee and surrounding southeastern states.',
+    'Tennessee Valley',
+    35.045630,
+    -85.309680,
+    'GridStatus',
+    TRUE
+),
+
+(
+    'AESO',
+    'Alberta Electric System Operator',
+    'Included for cross-border market monitoring.',
+    'Alberta',
+    51.044733,
+    -114.071883,
+    'GridStatus',
+    FALSE
+),
+
+(
+    'IESO',
+    'Independent Electricity System Operator',
+    'Ontario wholesale electricity market operator.',
+    'Ontario',
+    43.653225,
+    -79.383186,
+    'GridStatus',
+    FALSE
+),
+
+(
+    'BC',
+    'BC Hydro',
+    'British Columbia balancing authority.',
+    'British Columbia',
+    49.282729,
+    -123.120738,
+    'GridStatus',
+    FALSE
+),
+
+(
+    'HYDROQC',
+    'Hydro-Québec',
+    'Québec transmission operator.',
+    'Quebec',
+    46.813878,
+    -71.207981,
+    'GridStatus',
+    FALSE
+);
