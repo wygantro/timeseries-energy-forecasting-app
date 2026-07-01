@@ -7,8 +7,8 @@ if [[ ! -x $0 ]]; then
     exec $0 "$@"
 fi
 
-# define energy-consumption-api image
-IMAGE_NAME="energy-consumption-api"
+# define feature-service image
+IMAGE_NAME="feature-service-api"
 PROJECT_ID="$(gcloud config get-value project)"
 GCR_HOSTNAME="gcr.io"
 
@@ -17,14 +17,10 @@ docker build -t "${GCR_HOSTNAME}/${PROJECT_ID}/${IMAGE_NAME}:latest" .
 gcloud auth configure-docker
 docker push "${GCR_HOSTNAME}/${PROJECT_ID}/${IMAGE_NAME}:latest"
 
-echo "energy-consumption-api images built and pushed successfully"
+echo "api-test-service images built and pushed successfully"
 
-# Deploy Docker image to Cloud Run
-# REGION = 
-# PORT = 
-# ALLOW_UNAUTHENTICATED = True
-# SERVICE_NAME = 
 
+# # Deploy Docker image to Cloud Run
 # gcloud run deploy --image gcr.io/$PROJECT_ID/$IMAGE_NAME \
 #                   --platform managed \
 #                   --region $REGION \
