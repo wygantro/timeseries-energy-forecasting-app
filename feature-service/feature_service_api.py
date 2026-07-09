@@ -32,11 +32,27 @@
 
 
 from flask import Flask, jsonify
-from datetime import date, timedelta
+from datetime import date, timezone
+import os
+import psycopg2
+from psycopg2.extras import RealDictCursor
 
 from gridstatus import CAISO, Ercot, PJM, NYISO, ISONE, MISO, SPP
 
 app = Flask(__name__)
+
+# DATABASE_URL = os.getenv(
+#     "DATABASE_URL",
+#     "postgresql://user:<@RQfmoJu8f?5$(E@34.60.16.16:5432/feature-service-db"
+# )
+
+DB_HOST = os.getenv("DB_HOST", "34.60.16.16")
+DB_PORT = os.getenv("DB_PORT", "5432")
+DB_NAME = os.getenv("DB_NAME", "feature-service-db")
+DB_USER = os.getenv("DB_USER", "postgres")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "%,f_KA}i@e1KX0`(")
+
+
 
 ISO_MAP = {
     "caiso": CAISO,
@@ -51,13 +67,73 @@ ISO_MAP = {
 
 def pick(row, names):
     for name in names:
-        if name in row:
+        if name in row and row[name] is not None:
             return row[name]
     return None
+
+
+def to_utc(value):
+    if value is None:
+        return None
+
+    if hasattr(value, "to_pydatetime"):
+        value = value.to_pydatetime()
+
+    if value.tzinfo is None:
+        value = value.replace(tzinfo=timezone.utc)
+
+    return value.astimezone(timezone.utc)
+
+# def get_db_connection():
+#     return psycopg2.connect(DATABASE_URL, cursor_factory=RealDictCursor)
+
+def get_db_connection():
+    return psycopg2.connect(
+        host=DB_HOST,
+        port=DB_PORT,
+        dbname=DB_NAME,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        cursor_factory=RealDictCursor,
+    )
+
+def insert_energy_timeseries(record):
+    sql = """
+        INSERT INTO energy_timeseries (
+            iso_code,
+            interval_start_utc,
+            interval_end_utc,
+            load_mw,
+            price_usd_mwh
+        )
+        SELECT
+            %(iso_code)s,
+            %(interval_start_utc)s,
+            %(interval_end_utc)s,
+            %(load_mw)s,
+            %(price_usd_mwh)s
+        WHERE NOT EXISTS (
+            SELECT 1
+            FROM energy_timeseries
+            WHERE iso_code = %(iso_code)s
+              AND interval_start_utc = %(interval_start_utc)s
+        )
+        RETURNING *;
+    """
+
+    with get_db_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, record)
+            inserted = cur.fetchone()
+            conn.commit()
+
+    return inserted
+
 
 @app.get("/health")
 def health():
     return jsonify({"ok": True})
+
 
 @app.route("/")
 def home():
@@ -88,7 +164,7 @@ def grid(iso_code):
             }), 400
 
         iso = ISO_MAP[iso_code]()
-        query_date = date.today() - timedelta(days=1)
+        query_date = date.today()
 
         load_df = iso.get_load(date=query_date)
 
@@ -101,22 +177,50 @@ def grid(iso_code):
 
         load_row = load_df.iloc[-1].to_dict()
 
+        interval_start = pick(load_row, [
+            "Interval Start",
+            "Time",
+            "Interval Beginning",
+        ])
+
+        interval_end = pick(load_row, [
+            "Interval End",
+            "Time",
+            "Interval Ending",
+        ])
+
+        load_mw = pick(load_row, [
+            "Load",
+            "Demand",
+            "Current demand",
+            "System Total",
+            "Load MW",
+        ])
+
+        interval_start_utc = to_utc(interval_start)
+        interval_end_utc = to_utc(interval_end)
+
+        # If the source only gives one timestamp, use it for both start/end.
+        if interval_end_utc is None:
+            interval_end_utc = interval_start_utc
+
+        record = {
+            "iso_code": iso_code.upper(),
+            "interval_start_utc": interval_start_utc,
+            "interval_end_utc": interval_end_utc,
+            "load_mw": load_mw,
+            "price_usd_mwh": None,
+        }
+
+        inserted = insert_energy_timeseries(record)
+
         result = {
-            "iso_code": iso_code,
-            "time_stamp": str(
-                pick(load_row, ["Time", "Interval Start", "Interval End"])
-            ),
-            "electric_demand": pick(
-                load_row,
-                [
-                    "Load",
-                    "Demand",
-                    "Current demand",
-                    "System Total",
-                    "Load MW",
-                ],
-            ),
-            "location_id": iso_code.upper(),
+            "iso_code": record["iso_code"],
+            "interval_start_utc": str(record["interval_start_utc"]),
+            "interval_end_utc": str(record["interval_end_utc"]),
+            "load_mw": float(record["load_mw"]) if record["load_mw"] is not None else None,
+            "price_usd_mwh": record["price_usd_mwh"],
+            "db_action": "inserted" if inserted else "already_exists",
         }
 
         print(result)

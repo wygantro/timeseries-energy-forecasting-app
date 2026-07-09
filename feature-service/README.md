@@ -3,7 +3,7 @@
 
 
 # DB Credentials:
-PW: o+r/0_I)z4{xN<<A
+PW: %,f_KA}i@e1KX0`(
 
 ## Local image build and run on Docker
 
