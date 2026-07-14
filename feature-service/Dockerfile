@@ -1,26 +1,19 @@
 # Dockerfile
 
-FROM python:3.11.1
-RUN pip install --upgrade pip
-WORKDIR /feature-service
+FROM python:3.13-slim
 
-ENV APP_HOME /feature-service-api
-WORKDIR $APP_HOME
-COPY . ./
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
-RUN pip install -r ./config/requirements.txt
+WORKDIR /app
+
+COPY config/requirements.txt ./config/requirements.txt
+
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r ./config/requirements.txt
+
+COPY . .
 
 EXPOSE 5000
-
-# database env
-ENV DB_USER=user
-ENV DB_PASS=postgres
-ENV DB_FEATURE_SERVICE_NAME=feature-service-db
-ENV DB_HOST=172.30.192.3
-#ENV DB_HOST=136.112.214.240
-ENV DB_PORT=5432
-
-# API keys
-ENV POLYGON_API_KEY=68V4qcNzPdz7NuKkNvG5Hj2Z1O4hbvJj
 
 CMD ["python", "feature_service_api.py"]

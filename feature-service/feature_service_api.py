@@ -1,36 +1,5 @@
 # ./feature_service_api.py
 
-
-## Public Connection
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://user:pzQNLo8m$cULtO3c@34.60.16.16:5432/feature-service-db'
-# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-## Initialize Cloud SQL Connection
-# app.config["SQLALCHEMY_DATABASE_URI"] = (
-#     "postgresql+psycopg2://{user}:{pwd}@/{db}"
-#     "?host=/cloudsql/{instance}"
-# ).format(
-#     user="user",
-#     pwd="pzQNLo8m$cULtO3c",
-#     db="feature-service-db",
-#     instance="timeseries-energy-forecasting:us-central1:timeseries-energy-forecasting-instance"  # project:region:instance
-# )
-
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# db = SQLAlchemy(engine_options=dict(
-#     pool_pre_ping=True, pool_recycle=300, pool_size=5, max_overflow=2
-# ))
-# db.init_app(app)
-
-## Initialize Logging Configuration
-# logging.basicConfig(
-#     level=logging.INFO,
-#     format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',
-# )
-
-# logger = logging.getLogger()
-
-
 from flask import Flask, jsonify
 from datetime import date, timezone
 import os
@@ -52,7 +21,28 @@ DB_NAME = os.getenv("DB_NAME", "feature-service-db")
 DB_USER = os.getenv("DB_USER", "postgres")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "%,f_KA}i@e1KX0`(")
 
+## Public Connection
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://user:pzQNLo8m$cULtO3c@34.60.16.16:5432/feature-service-db'
+# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+## Initialize Cloud SQL Connection
+# app.config["SQLALCHEMY_DATABASE_URI"] = (
+#     "postgresql+psycopg2://{user}:{pwd}@/{db}"
+#     "?host=/cloudsql/{instance}"
+# ).format(
+#     user="user",
+#     pwd="pzQNLo8m$cULtO3c",
+#     db="feature-service-db",
+#     instance="timeseries-energy-forecasting:us-central1:timeseries-energy-forecasting-instance"  # project:region:instance
+# )
+
+## Initialize Logging Configuration
+# logging.basicConfig(
+#     level=logging.INFO,
+#     format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',
+# )
+
+# logger = logging.getLogger()
 
 ISO_MAP = {
     "caiso": CAISO,
@@ -235,4 +225,8 @@ def grid(iso_code):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(
+        host="0.0.0.0",
+        port=5000,
+        debug=False,
+    )

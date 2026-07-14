@@ -9,12 +9,12 @@ PW: %,f_KA}i@e1KX0`(
 
 1. Build docker file
 ```
-# docker build -t feature-service:latest .
+# docker build --no-cache -t feature-service-api:latest .
 ```
 
 2. Run image as a container
 ```
-# docker run -d -p 5000:5000 feature-service:latest 
+# docker run -d -p 5000:5000 feature-service-api:latest 
 ```
 
 3. View message at http://127.0.0.1:5000/
