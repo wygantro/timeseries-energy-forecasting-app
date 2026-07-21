@@ -167,10 +167,9 @@ def grid(iso_code):
 
         load_row = load_df.iloc[-1].to_dict()
 
-        interval_start = pick(load_row, [
-            "Interval Start",
-            "Time",
-            "Interval Beginning",
+        interval_start = pick(load_row, ["Interval Start",
+        "Time",
+        "Interval Beginning",
         ])
 
         interval_end = pick(load_row, [
@@ -190,7 +189,9 @@ def grid(iso_code):
         interval_start_utc = to_utc(interval_start)
         interval_end_utc = to_utc(interval_end)
 
-        # If the source only gives one timestamp, use it for both start/end.
+        ### If the source only gives one timestamp, use it for both start/end.
+        
+        
         if interval_end_utc is None:
             interval_end_utc = interval_start_utc
 
