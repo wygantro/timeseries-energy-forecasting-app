@@ -33,6 +33,8 @@ gcloud init
 #docker build -t gcr.io/timeseries-energy-forecasting-app/feature-service:latest .
 
 # docker run -d -p 7000:7000 gcr.io/timeseries-energy-forecasting-app/feature-service:latest
+
+# ./feature-service-api-gcr.sh
 ```
 
 4. Authenticate Docker with Google cloud project

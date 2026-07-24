@@ -10,37 +10,17 @@ from gridstatus import CAISO, Ercot, PJM, NYISO, ISONE, MISO, SPP
 
 app = Flask(__name__)
 
-# DATABASE_URL = os.getenv(
-#     "DATABASE_URL",
-#     "postgresql://user:<@RQfmoJu8f?5$(E@34.60.16.16:5432/feature-service-db"
-# )
+
+# Database Connection ENV Variables
+DB_CONNECTION_NAME = os.getenv("DB_CONNECTION_NAME",
+                               "timeseries-energy-forecasting:us-central1:timeseries-energy-forecasting-instance")
 
 DB_HOST = os.getenv("DB_HOST", "34.60.16.16")
-DB_PORT = os.getenv("DB_PORT", "5432")
+DB_PORT = int(os.getenv("DB_PORT", "5432"))
+
 DB_NAME = os.getenv("DB_NAME", "feature-service-db")
 DB_USER = os.getenv("DB_USER", "postgres")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "%,f_KA}i@e1KX0`(")
-
-## Public Connection
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://user:pzQNLo8m$cULtO3c@34.60.16.16:5432/feature-service-db'
-# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-## Initialize Cloud SQL Connection
-# app.config["SQLALCHEMY_DATABASE_URI"] = (
-#     "postgresql+psycopg2://{user}:{pwd}@/{db}"
-#     "?host=/cloudsql/{instance}"
-# ).format(
-#     user="user",
-#     pwd="pzQNLo8m$cULtO3c",
-#     db="feature-service-db",
-#     instance="timeseries-energy-forecasting:us-central1:timeseries-energy-forecasting-instance"  # project:region:instance
-# )
-
-## Initialize Logging Configuration
-# logging.basicConfig(
-#     level=logging.INFO,
-#     format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',
-# )
 
 # logger = logging.getLogger()
 
@@ -74,17 +54,44 @@ def to_utc(value):
 
     return value.astimezone(timezone.utc)
 
-# def get_db_connection():
-#     return psycopg2.connect(DATABASE_URL, cursor_factory=RealDictCursor)
-
 def get_db_connection():
+    missing = [
+        name
+        for name, value in {
+            "DB_NAME": DB_NAME,
+            "DB_USER": DB_USER,
+            "DB_PASSWORD": DB_PASSWORD,
+        }.items()
+        if not value
+    ]
+
+    if missing:
+        raise RuntimeError(
+            f"Missing required database environment variables: "
+            f"{', '.join(missing)}"
+        )
+
+    # Cloud SQL Unix socket:
+    # /cloudsql/project-id:region:instance-name
+    if DB_CONNECTION_NAME:
+        connection_options = {
+            "host": f"/cloudsql/{DB_CONNECTION_NAME}",
+        }
+
+    # Local PostgreSQL or Cloud SQL Auth Proxy over TCP
+    else:
+        connection_options = {
+            "host": DB_HOST,
+            "port": DB_PORT,
+        }
+
     return psycopg2.connect(
-        host=DB_HOST,
-        port=DB_PORT,
+        **connection_options,
         dbname=DB_NAME,
         user=DB_USER,
         password=DB_PASSWORD,
         cursor_factory=RealDictCursor,
+        connect_timeout=10,
     )
 
 def insert_energy_timeseries(record):
