@@ -20,32 +20,6 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
 
-# ---------------------------------------------------------------------------
-# Database model
-# ---------------------------------------------------------------------------
-
-class PredictionRecord(db.Model):
-    __tablename__ = "prediction_records"
-
-    id = db.Column(db.Integer, primary_key=True)
-    model_name = db.Column(db.String(100), nullable=False)
-    input_data = db.Column(db.Text, nullable=False)
-    prediction_data = db.Column(db.Text, nullable=False)
-    created_at = db.Column(
-        db.DateTime,
-        nullable=False,
-        default=lambda: datetime.now(timezone.utc),
-    )
-
-    def to_dict(self) -> dict[str, Any]:
-        return {
-            "id": self.id,
-            "model_name": self.model_name,
-            "input": json.loads(self.input_data),
-            "prediction": json.loads(self.prediction_data),
-            "created_at": self.created_at.isoformat(),
-        }
-
 
 # ---------------------------------------------------------------------------
 # Placeholder model layer
