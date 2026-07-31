@@ -141,14 +141,15 @@ def predict():
             horizon=horizon,
         )
 
-        record = PredictionRecord(
-            model_name=model_name,
-            input_data=json.dumps({
-                "observations": observations,
-                "horizon": horizon,
-            }),
-            prediction_data=json.dumps(predictions),
-        )
+        # record = PredictionRecord(
+        #     model_name=model_name,
+        #     input_data=json.dumps({
+        #         "observations": observations,
+        #         "horizon": horizon,
+        #     }),
+        #     prediction_data=json.dumps(predictions),
+        # )
+        record = ""
 
         db.session.add(record)
         db.session.commit()
@@ -182,12 +183,12 @@ def list_predictions():
     limit = request.args.get("limit", default=20, type=int)
     limit = max(1, min(limit, 100))
 
-    records = (
-        PredictionRecord.query
-        .order_by(PredictionRecord.created_at.desc())
-        .limit(limit)
-        .all()
-    )
+    # records = (
+    #     PredictionRecord.query
+    #     .order_by(PredictionRecord.created_at.desc())
+    #     .limit(limit)
+    #     .all()
+    # )
 
     return jsonify({
         "predictions": [record.to_dict() for record in records],
@@ -196,7 +197,7 @@ def list_predictions():
 
 @app.get("/predictions/<int:prediction_id>")
 def get_prediction(prediction_id: int):
-    record = db.session.get(PredictionRecord, prediction_id)
+    # record = db.session.get(PredictionRecord, prediction_id)
 
     if record is None:
         return jsonify({
