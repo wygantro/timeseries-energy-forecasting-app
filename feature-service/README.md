@@ -2,8 +2,13 @@
 
 
 
+
+
+
+
+
 # DB Credentials:
-PW: %,f_KA}i@e1KX0`(
+PW: ;|-p,8y"e&OgPY8n
 
 ## Local image build and run on Docker
 
@@ -12,7 +17,12 @@ PW: %,f_KA}i@e1KX0`(
 # docker build --no-cache -t feature-service-api:latest .
 ```
 
-2. Run image as a container
+
+
+
+
+2. Run image as a     
+container
 ```
 # docker run -d -p 5000:5000 feature-service-api:latest 
 ```
