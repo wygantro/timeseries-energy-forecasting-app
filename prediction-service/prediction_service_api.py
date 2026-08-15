@@ -25,44 +25,6 @@ db = SQLAlchemy(app)
 # Placeholder model layer
 # ---------------------------------------------------------------------------
 
-class BaseTimeSeriesModel:
-    def predict(
-        self,
-        observations: list[float],
-        horizon: int,
-    ) -> list[float]:
-        raise NotImplementedError
-
-
-class NaiveTimeSeriesModel(BaseTimeSeriesModel):
-    """
-    Placeholder model that repeats the most recent observation.
-
-    Replace this class with an adapter for your actual model, such as:
-    - scikit-learn
-    - statsmodels
-    - Prophet
-    - PyTorch
-    - TensorFlow
-    """
-
-    def predict(
-        self,
-        observations: list[float],
-        horizon: int,
-    ) -> list[float]:
-        latest_value = observations[-1]
-        return [latest_value] * horizon
-
-
-MODEL_REGISTRY: dict[str, BaseTimeSeriesModel] = {
-    "naive": NaiveTimeSeriesModel(),
-}
-
-
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
 
 def get_json_body() -> dict[str, Any]:
     body = request.get_json(silent=True)
