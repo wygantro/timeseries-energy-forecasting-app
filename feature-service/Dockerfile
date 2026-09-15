@@ -17,3 +17,7 @@ COPY . .
 EXPOSE 5000
 
 CMD ["python", "feature_service_api.py"]
+
+DB_NAME = os.getenv("DB_NAME", "feature-service-db")
+DB_USER = os.getenv("DB_USER", "postgres")
+DB_PASSWORD = os.getenv("DB_PASSWORD", "%,f_KA}i@e1KX0`(")
