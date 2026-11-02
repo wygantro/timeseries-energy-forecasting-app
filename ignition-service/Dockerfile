@@ -1,22 +1,18 @@
-# ------------------------------------------------------------
-# Ignition Maker Edition
-# Base: Official Inductive Automation Ignition image
-# ------------------------------------------------------------
+# Dockerfile
 
-ARG IGNITION_VERSION=8.3.9
+# Official Inductive Automation Ignition image
+FROM inductiveautomation/ignition:8.3.0
 
-FROM inductiveautomation/ignition:${IGNITION_VERSION}
+# Gateway Configuration
+# Accept Ignition EULA
+ENV ACCEPT_IGNITION_EULA=Y
 
-LABEL application="Ignition Maker Edition"
-LABEL description="Ignition Maker Edition container for Google Cloud"
+# Set Ignition edition
+ENV IGNITION_EDITION=maker
 
-# Ignition Gateway ports
-# 8088 = HTTP
-# 8043 = HTTPS
-# 8060 = Gateway Network
+# Set timezone
+ENV TZ=America/Detroit
+
+# Network Configuration
+# Ignition Gateway HTTP port
 EXPOSE 8088
-EXPOSE 8043
-EXPOSE 8060
-
-# Persist this directory outside the container.
-VOLUME ["/usr/local/bin/ignition/data"]
