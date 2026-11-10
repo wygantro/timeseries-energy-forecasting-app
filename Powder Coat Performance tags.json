@@ -1,0 +1,108 @@
+{
+  "name": "Powder Coat Test",
+  "tagType": "Folder",
+  "tags": [
+    {
+      "name": "North Booth",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "dataType": "String",
+          "defaultValue": "North",
+          "name": "booth",
+          "tagType": "AtomicTag",
+          "value": "North",
+          "valueSource": "memory"
+        },
+        {
+          "dataType": "Boolean",
+          "defaultValue": false,
+          "name": "respray",
+          "tagType": "AtomicTag",
+          "value": false,
+          "valueSource": "memory"
+        },
+        {
+          "dataType": "String",
+          "defaultValue": "good",
+          "name": "part_quality",
+          "tagType": "AtomicTag",
+          "value": "good",
+          "valueSource": "memory"
+        },
+        {
+          "dataType": "Boolean",
+          "defaultValue": false,
+          "eventScripts": [
+            {
+              "eventid": "valueChanged",
+              "script": "    from java.lang import Thread\n    \n    if initialChange:\n        return\n\n    # Rising edge only\n    if not previousValue.value and currentValue.value:\n\n        Thread.sleep(100)\n\n        respray \u003d system.tag.readBlocking([\"[.]respray\"])[0].value\n\n        if respray:\n            partQuality \u003d \"bad\"\n        else:\n            partQuality \u003d \"good\"\n\n        result \u003d system.tag.writeBlocking(\n            [\"[.]part_quality\"],\n            [partQuality]\n        )"
+            }
+          ],
+          "name": "part_present",
+          "tagType": "AtomicTag",
+          "value": false,
+          "valueSource": "memory"
+        },
+        {
+          "defaultValue": 0,
+          "name": "part_recipe",
+          "tagType": "AtomicTag",
+          "value": 9,
+          "valueSource": "memory"
+        }
+      ]
+    },
+    {
+      "name": "South Booth",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "dataType": "Boolean",
+          "defaultValue": false,
+          "name": "respray",
+          "tagType": "AtomicTag",
+          "value": false,
+          "valueSource": "memory"
+        },
+        {
+          "defaultValue": 0,
+          "name": "part_recipe",
+          "tagType": "AtomicTag",
+          "value": 5,
+          "valueSource": "memory"
+        },
+        {
+          "dataType": "String",
+          "defaultValue": "South",
+          "name": "booth",
+          "tagType": "AtomicTag",
+          "value": "South",
+          "valueSource": "memory"
+        },
+        {
+          "dataType": "String",
+          "defaultValue": "good",
+          "name": "part_quality",
+          "tagType": "AtomicTag",
+          "value": "good",
+          "valueSource": "memory"
+        },
+        {
+          "dataType": "Boolean",
+          "defaultValue": false,
+          "eventScripts": [
+            {
+              "eventid": "valueChanged",
+              "script": "    from java.lang import Thread\n    if initialChange:\n        return\n\n    # Rising edge only\n    if not previousValue.value and currentValue.value:\n\n        Thread.sleep(100)\n\n        respray \u003d system.tag.readBlocking([\"[.]respray\"])[0].value\n\n        if respray:\n            partQuality \u003d \"bad\"\n        else:\n            partQuality \u003d \"good\"\n\n        result \u003d system.tag.writeBlocking(\n            [\"[.]part_quality\"],\n            [partQuality]\n        )"
+            }
+          ],
+          "name": "part_present",
+          "tagType": "AtomicTag",
+          "value": false,
+          "valueSource": "memory"
+        }
+      ]
+    }
+  ]
+}
