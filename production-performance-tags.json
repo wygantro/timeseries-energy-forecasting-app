@@ -1,0 +1,612 @@
+{
+  "name": "Sub Assembly Lasers v1",
+  "tagType": "Folder",
+  "tags": [
+    {
+      "name": "Laser 2 (East)",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "Op140",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "Machine",
+              "value": "Laser 2",
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp140_OEE.State",
+              "name": "State",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op140/Machine\"\n        ])[0].value\n\n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op140/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op140/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"outfeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp140_OEE.Outfeed",
+              "dataType": "Boolean",
+              "name": "Outfeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "memory",
+              "name": "Operation",
+              "value": 140,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op140/Machine\"\n        ])[0].value\n\n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op140/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op140/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"infeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp140_OEE.Infeed",
+              "dataType": "Boolean",
+              "name": "Infeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp140_OEE.ProductCode",
+              "dataType": "String",
+              "name": "ProductCode",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp140_OEE.FaultString",
+              "dataType": "String",
+              "name": "Fault_Code",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            }
+          ]
+        },
+        {
+          "name": "Op110",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp110_OEE.ProductCode",
+              "dataType": "String",
+              "name": "ProductCode",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "Machine",
+              "value": "Laser 2",
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op110/Machine\"\n        ])[0].value\n\n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op110/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op110/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"outfeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp110_OEE.Outfeed",
+              "dataType": "Boolean",
+              "name": "Outfeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "\t\n\tlogger \u003d system.util.getLogger(\"SubAssemblyFaultTracking\")\n\t\n\t# Value Changed Event on MachineState tag\n\tif initialChange:\n\t    return\n\t\n\toldState \u003d previousValue.value\n\tnewState \u003d currentValue.value\n\t\n\t# Tag paths\n\tmachineTagPath \u003d \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op110/Machine\"\n\tfaultMessageTagPath \u003d \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op110/FaultCode\"\n\t\n\t# Entering fault state\n\tif oldState !\u003d 5 and newState \u003d\u003d 5:\n\t\n\t    machine \u003d system.tag.readBlocking([machineTagPath])[0].value\n\t    faultMessage \u003d system.tag.readBlocking([faultMessageTagPath])[0].value\n\t    startTime \u003d system.date.now()\n\t\n\t    params \u003d {\n\t        \"machine\": machine,\n\t        \"faultMessage\": faultMessage,\n\t        \"startTime\": startTime\n\t    }\n\t\n\t    system.db.runNamedQuery(\n\t    \t\"sub-assembly-production-performance\",\n\t    \t\"Sub Assembly Production/SubAssemblyFaultInsert\",\n\t    \tparams\n\t    )\n\t    \n\t    logger.info(\n\t    \t\t\"fault entry | Machine\u003d%s | Fault\u003d%s | StartTime\u003d%s\"\n\t    \t\t% (machine, faultMessage, startTime)\n\t    )\n\t\n\t# Updating/exiting fault state\n\telif oldState \u003d\u003d 5 and newState !\u003d 5:\n\t\n\t    machine \u003d system.tag.readBlocking([machineTagPath])[0].value\n\t\n\t    params \u003d {\n\t        \"machine\": machine,\n\t        \"endTime\": system.date.now()\n\t    }\n\t\n\t    system.db.runNamedQuery(\n\t    \t\"sub-assembly-production-performance\",\n\t    \t\"Sub Assembly Production/SubAssemblyFaultComplete\",\n\t    \tparams\n\t    )\n\t    \n\t    logger.info(\n\t    \t\t\"fault closed | Machine\u003d%s | StartTime\u003d%s\"\n\t    \t\t% (machine, startTime)\n\t    )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp110_OEE.State",
+              "name": "State",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op110/Machine\"\n        ])[0].value\n\n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op110/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op110/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"infeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp110_OEE.Infeed",
+              "readOnly": false,
+              "dataType": "Boolean",
+              "name": "Infeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp110_OEE.FaultString",
+              "dataType": "String",
+              "name": "FaultCode",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "memory",
+              "name": "Operation",
+              "value": 110,
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "name": "Op120",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp120_OEE.State",
+              "name": "State",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp120_OEE.ProductCode",
+              "dataType": "String",
+              "name": "ProductCode",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op120/Machine\"\n        ])[0].value\n\n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op120/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op120/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"infeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp120_OEE.Infeed",
+              "readOnly": false,
+              "dataType": "Boolean",
+              "name": "Infeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "memory",
+              "name": "Operation",
+              "value": 120,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp120_OEE.FaultString",
+              "dataType": "String",
+              "name": "Fault_Code",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op120/Machine\"\n        ])[0].value\n\n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op120/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op120/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"outfeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp120_OEE.Outfeed",
+              "dataType": "Boolean",
+              "name": "Outfeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "Machine",
+              "value": "Laser 2",
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "valueSource": "opc",
+          "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]Sys.OH.Cycle.HMI_CycleTime",
+          "dataType": "Float4",
+          "name": "CycleTime",
+          "tagType": "AtomicTag",
+          "opcServer": "Ignition OPC UA Server"
+        },
+        {
+          "name": "Op130",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp130_OEE.ProductCode",
+              "dataType": "String",
+              "name": "ProductCode",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "Machine",
+              "value": "Laser 2",
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp130_OEE.State",
+              "name": "State",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op130/Machine\"\n        ])[0].value\n\n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op130/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op130/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"infeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp130_OEE.Infeed",
+              "readOnly": false,
+              "dataType": "Boolean",
+              "name": "Infeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp130_OEE.FaultString",
+              "dataType": "String",
+              "name": "Fault_Code",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op130/Machine\"\n        ])[0].value\n\n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op130/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 2 (East)/Op130/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"outfeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 2]IgnOp130_OEE.Outfeed",
+              "dataType": "Boolean",
+              "name": "Outfeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "memory",
+              "name": "Operation",
+              "value": 130,
+              "tagType": "AtomicTag"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laser 1 (West)",
+      "tagType": "Folder",
+      "tags": [
+        {
+          "name": "Op140",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "valueSource": "memory",
+              "name": "Operation",
+              "value": 140,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp110_OEE.FaultString",
+              "dataType": "String",
+              "name": "FaultCode",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op140/Machine\"\n        ])[0].value\n\n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op140/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op140/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"infeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp140_OEE.Infeed",
+              "dataType": "Boolean",
+              "name": "Infeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp140_OEE.State",
+              "name": "State",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "Machine",
+              "value": "Laser 1",
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op140/Machine\"\n        ])[0].value\n\n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op140/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op140/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"outfeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp140_OEE.Outfeed",
+              "dataType": "Boolean",
+              "name": "Outfeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp140_OEE.ProductCode",
+              "dataType": "String",
+              "name": "ProductCode",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            }
+          ]
+        },
+        {
+          "valueSource": "opc",
+          "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]Sys.OH.Cycle.HMI_CycleTime",
+          "dataType": "Float4",
+          "name": "CycleTime",
+          "tagType": "AtomicTag",
+          "opcServer": "Ignition OPC UA Server"
+        },
+        {
+          "name": "Op110",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "valueSource": "memory",
+              "name": "Operation",
+              "value": 110,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp110_OEE.FaultString",
+              "dataType": "String",
+              "name": "FaultCode",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op110/Machine\"\n        ])[0].value\n        \n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op110/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op110/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"outfeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp110_OEE.Outfeed",
+              "dataType": "Boolean",
+              "name": "Outfeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "\t\n\tlogger \u003d system.util.getLogger(\"SubAssemblyFaultTracking\")\n\t\n\t# Value Changed Event on MachineState tag\n\tif initialChange:\n\t    return\n\t\n\toldState \u003d previousValue.value\n\tnewState \u003d currentValue.value\n\t\n\t# Tag paths\n\tmachineTagPath \u003d \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op110/Machine\"\n\tfaultMessageTagPath \u003d \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op110/FaultCode\"\n\t\n\t# Entering fault state\n\tif oldState !\u003d 5 and newState \u003d\u003d 5:\n\t\n\t    machine \u003d system.tag.readBlocking([machineTagPath])[0].value\n\t    faultMessage \u003d system.tag.readBlocking([faultMessageTagPath])[0].value\n\t    startTime \u003d system.date.now()\n\t\n\t    params \u003d {\n\t        \"machine\": machine,\n\t        \"faultMessage\": faultMessage,\n\t        \"startTime\": startTime\n\t    }\n\t\n\t    system.db.runNamedQuery(\n\t    \t\"sub-assembly-production-performance\",\n\t    \t\"Sub Assembly Production/SubAssemblyFaultInsert\",\n\t    \tparams\n\t    )\n\t    \n\t    logger.info(\n\t    \t\t\"fault entry | Machine\u003d%s | Fault\u003d%s | StartTime\u003d%s\"\n\t    \t\t% (machine, faultMessage, startTime)\n\t    )\n\t\n\t# Updating/exiting fault state\n\telif oldState \u003d\u003d 5 and newState !\u003d 5:\n\t\n\t    machine \u003d system.tag.readBlocking([machineTagPath])[0].value\n\t\n\t    params \u003d {\n\t        \"machine\": machine,\n\t        \"endTime\": system.date.now()\n\t    }\n\t\n\t    system.db.runNamedQuery(\n\t    \t\"sub-assembly-production-performance\",\n\t    \t\"Sub Assembly Production/SubAssemblyFaultComplete\",\n\t    \tparams\n\t    )\n\t    \n\t    logger.info(\n\t    \t\t\"fault closed | Machine\u003d%s | StartTime\u003d%s\"\n\t    \t\t% (machine, startTime)\n\t    )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp110_OEE.State",
+              "name": "State",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp110_OEE.ProductCode",
+              "dataType": "String",
+              "name": "ProductCode",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op110/Machine\"\n        ])[0].value\n        \n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op110/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op110/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"infeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp110_OEE.Infeed",
+              "readOnly": false,
+              "dataType": "Boolean",
+              "name": "Infeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "Machine",
+              "value": "Laser 1",
+              "tagType": "AtomicTag"
+            }
+          ]
+        },
+        {
+          "name": "Op130",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "valueSource": "memory",
+              "name": "Operation",
+              "value": 130,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp130_OEE.ProductCode",
+              "dataType": "String",
+              "name": "ProductCode",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op130/Machine\"\n        ])[0].value\n        \n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op130/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op130/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"outfeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp130_OEE.Outfeed",
+              "dataType": "Boolean",
+              "name": "Outfeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp130_OEE.State",
+              "name": "State",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "Machine",
+              "value": "Laser 1",
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp130_OEE.FaultString",
+              "dataType": "String",
+              "name": "FaultCode",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op130/Machine\"\n        ])[0].value\n\n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op130/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op130/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"infeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp130_OEE.Infeed",
+              "readOnly": false,
+              "dataType": "Boolean",
+              "name": "Infeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            }
+          ]
+        },
+        {
+          "name": "Op120",
+          "tagType": "Folder",
+          "tags": [
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op120/Machine\"\n        ])[0].value\n        \n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op120/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op120/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"outfeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp120_OEE.Outfeed",
+              "dataType": "Boolean",
+              "name": "Outfeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "memory",
+              "name": "Operation",
+              "value": 120,
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "memory",
+              "dataType": "String",
+              "name": "Machine",
+              "value": "Laser 1",
+              "tagType": "AtomicTag"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp120_OEE.ProductCode",
+              "dataType": "String",
+              "name": "ProductCode",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp120_OEE.FaultString",
+              "dataType": "String",
+              "name": "FaultCode",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "eventScripts": [
+                {
+                  "eventid": "valueChanged",
+                  "script": "    # Ignore initial tag subscription\n    if initialChange:\n        return\n\n    # Detect leading edge: False -\u003e True\n    if currentValue.value \u003d\u003d True and previousValue.value \u003d\u003d False:\n        \n        # Read machine, operation and product code\n        machine \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op120/Machine\"\n        ])[0].value\n\n        operation \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op120/Operation\"\n        ])[0].value\n\n        product_code \u003d system.tag.readBlocking([\n            \"[default]Sub Assembly Lasers v1/Laser 1 (West)/Op120/ProductCode\"\n        ])[0].value\n        \n        feed \u003d \"infeed\"\n\n        # Named Query parameters\n        params \u003d {\n            \"datetime_input\": system.date.now(),\n            \"machine\": machine,\n            \"operation\": operation,\n            \"product_code\": product_code,\n            \"feed\": feed\n        }\n\n        # Execute Named Query\n        system.db.runNamedQuery(\n        \t \"sub-assembly-production-performance\",\n            \"Sub Assembly Production/SubAssemblyProductionFeeds\",\n            params\n        )\n\n        system.util.getLogger(\"SubAssemblyProductionRecords\").info(\n            \"%s recorded. machine: %s, operation: %s\"\n            % (feed, machine, operation)\n        )"
+                }
+              ],
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp120_OEE.Infeed",
+              "readOnly": false,
+              "dataType": "Boolean",
+              "name": "Infeed",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            },
+            {
+              "valueSource": "opc",
+              "opcItemPath": "ns\u003d1;s\u003d[Sub Assembly Laser 1]IgnOp120_OEE.State",
+              "name": "State",
+              "tagType": "AtomicTag",
+              "opcServer": "Ignition OPC UA Server"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
