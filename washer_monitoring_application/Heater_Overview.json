@@ -1,0 +1,1497 @@
+{
+  "custom": {
+    "demoMode": true
+  },
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1280,
+      "height": 800
+    }
+  },
+  "root": {
+    "type": "ia.container.coord",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "fixed",
+      "style": {
+        "backgroundColor": "#10151D"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "x": 24,
+          "y": 12,
+          "width": 800,
+          "height": 48
+        },
+        "props": {
+          "text": "HEATER SYSTEM  /  HTR-01",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 28,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Demo"
+        },
+        "position": {
+          "x": 1000,
+          "y": 18,
+          "width": 250,
+          "height": 36
+        },
+        "props": {
+          "text": "DEMO DATA \u2022 READ ONLY",
+          "style": {
+            "color": "#EAB96B",
+            "fontSize": 13,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "PageTitle"
+        },
+        "position": {
+          "x": 24,
+          "y": 65,
+          "width": 1220,
+          "height": 42
+        },
+        "props": {
+          "text": "REAL-TIME OVERVIEW",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 22,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "Nav0"
+        },
+        "position": {
+          "x": 24,
+          "y": 112,
+          "width": 210,
+          "height": 36
+        },
+        "props": {
+          "text": "Real-time overview",
+          "style": {
+            "backgroundColor": "#35516D",
+            "color": "#E5E7EB"
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "system.perspective.navigate(view=\"Heater/Overview\")"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "Nav1"
+        },
+        "position": {
+          "x": 244,
+          "y": 112,
+          "width": 210,
+          "height": 36
+        },
+        "props": {
+          "text": "Levels & valves",
+          "style": {
+            "backgroundColor": "#181F29",
+            "color": "#E5E7EB"
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "system.perspective.navigate(view=\"Heater/Levels_Valves\")"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "Nav2"
+        },
+        "position": {
+          "x": 464,
+          "y": 112,
+          "width": 210,
+          "height": 36
+        },
+        "props": {
+          "text": "PM history",
+          "style": {
+            "backgroundColor": "#181F29",
+            "color": "#E5E7EB"
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "system.perspective.navigate(view=\"Heater/PM_History\")"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiPanel0"
+        },
+        "position": {
+          "x": 24,
+          "y": 165,
+          "width": 298,
+          "height": 100
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiLabel0"
+        },
+        "position": {
+          "x": 34,
+          "y": 170,
+          "width": 278,
+          "height": 32
+        },
+        "props": {
+          "text": "TEMPERATURE READY",
+          "style": {
+            "color": "#94A3B8",
+            "fontSize": 13,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiValue0"
+        },
+        "position": {
+          "x": 34,
+          "y": 203,
+          "width": 278,
+          "height": 54
+        },
+        "props": {
+          "text": "6 / 6",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 28,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiPanel1"
+        },
+        "position": {
+          "x": 334,
+          "y": 165,
+          "width": 298,
+          "height": 100
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiLabel1"
+        },
+        "position": {
+          "x": 344,
+          "y": 170,
+          "width": 278,
+          "height": 32
+        },
+        "props": {
+          "text": "AVG TEMPERATURE",
+          "style": {
+            "color": "#94A3B8",
+            "fontSize": 13,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiValue1"
+        },
+        "position": {
+          "x": 344,
+          "y": 203,
+          "width": 278,
+          "height": 54
+        },
+        "props": {
+          "text": "145 \u00b0F",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 28,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiPanel2"
+        },
+        "position": {
+          "x": 644,
+          "y": 165,
+          "width": 298,
+          "height": 100
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiLabel2"
+        },
+        "position": {
+          "x": 654,
+          "y": 170,
+          "width": 278,
+          "height": 32
+        },
+        "props": {
+          "text": "HEATER OUTPUT",
+          "style": {
+            "color": "#94A3B8",
+            "fontSize": 13,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiValue2"
+        },
+        "position": {
+          "x": 654,
+          "y": 203,
+          "width": 278,
+          "height": 54
+        },
+        "props": {
+          "text": "68%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 28,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiPanel3"
+        },
+        "position": {
+          "x": 954,
+          "y": 165,
+          "width": 298,
+          "height": 100
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiLabel3"
+        },
+        "position": {
+          "x": 964,
+          "y": 170,
+          "width": 278,
+          "height": 32
+        },
+        "props": {
+          "text": "ACTIVE WARNINGS",
+          "style": {
+            "color": "#94A3B8",
+            "fontSize": 13,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiValue3"
+        },
+        "position": {
+          "x": 964,
+          "y": 203,
+          "width": 278,
+          "height": 54
+        },
+        "props": {
+          "text": "1",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 28,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "StageHeading"
+        },
+        "position": {
+          "x": 24,
+          "y": 275,
+          "width": 1200,
+          "height": 36
+        },
+        "props": {
+          "text": "PROCESS OVERVIEW",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "StagePanel0"
+        },
+        "position": {
+          "x": 24,
+          "y": 318,
+          "width": 196,
+          "height": 285
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Stage0"
+        },
+        "position": {
+          "x": 32,
+          "y": 326,
+          "width": 180,
+          "height": 35
+        },
+        "props": {
+          "text": "STAGE 01",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "TankBackground0"
+        },
+        "position": {
+          "x": 91,
+          "y": 369,
+          "width": 62,
+          "height": 103
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400,
+            "backgroundColor": "#303A48",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "TankLevel0"
+        },
+        "position": {
+          "x": 91,
+          "y": 388,
+          "width": 62,
+          "height": 84
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400,
+            "backgroundColor": "#426887",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Level0"
+        },
+        "position": {
+          "x": 92,
+          "y": 397,
+          "width": 65,
+          "height": 35
+        },
+        "props": {
+          "text": "82%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Temp0"
+        },
+        "position": {
+          "x": 32,
+          "y": 482,
+          "width": 180,
+          "height": 40
+        },
+        "props": {
+          "text": "121 \u00b0F  /  SP 120\u00b0",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 17,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Output0"
+        },
+        "position": {
+          "x": 32,
+          "y": 523,
+          "width": 180,
+          "height": 30
+        },
+        "props": {
+          "text": "Output: 55%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Status0"
+        },
+        "position": {
+          "x": 32,
+          "y": 560,
+          "width": 180,
+          "height": 30
+        },
+        "props": {
+          "text": "READY",
+          "style": {
+            "color": "#67D4A0",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "StagePanel1"
+        },
+        "position": {
+          "x": 231,
+          "y": 318,
+          "width": 196,
+          "height": 285
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Stage1"
+        },
+        "position": {
+          "x": 239,
+          "y": 326,
+          "width": 180,
+          "height": 35
+        },
+        "props": {
+          "text": "STAGE 02",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "TankBackground1"
+        },
+        "position": {
+          "x": 298,
+          "y": 369,
+          "width": 62,
+          "height": 103
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400,
+            "backgroundColor": "#303A48",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "TankLevel1"
+        },
+        "position": {
+          "x": 298,
+          "y": 394,
+          "width": 62,
+          "height": 78
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400,
+            "backgroundColor": "#426887",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Level1"
+        },
+        "position": {
+          "x": 299,
+          "y": 397,
+          "width": 65,
+          "height": 35
+        },
+        "props": {
+          "text": "76%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Temp1"
+        },
+        "position": {
+          "x": 239,
+          "y": 482,
+          "width": 180,
+          "height": 40
+        },
+        "props": {
+          "text": "140 \u00b0F  /  SP 140\u00b0",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 17,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Output1"
+        },
+        "position": {
+          "x": 239,
+          "y": 523,
+          "width": 180,
+          "height": 30
+        },
+        "props": {
+          "text": "Output: 72%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Status1"
+        },
+        "position": {
+          "x": 239,
+          "y": 560,
+          "width": 180,
+          "height": 30
+        },
+        "props": {
+          "text": "READY",
+          "style": {
+            "color": "#67D4A0",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "StagePanel2"
+        },
+        "position": {
+          "x": 438,
+          "y": 318,
+          "width": 196,
+          "height": 285
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Stage2"
+        },
+        "position": {
+          "x": 446,
+          "y": 326,
+          "width": 180,
+          "height": 35
+        },
+        "props": {
+          "text": "STAGE 03",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "TankBackground2"
+        },
+        "position": {
+          "x": 505,
+          "y": 369,
+          "width": 62,
+          "height": 103
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400,
+            "backgroundColor": "#303A48",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "TankLevel2"
+        },
+        "position": {
+          "x": 505,
+          "y": 402,
+          "width": 62,
+          "height": 70
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400,
+            "backgroundColor": "#426887",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Level2"
+        },
+        "position": {
+          "x": 506,
+          "y": 397,
+          "width": 65,
+          "height": 35
+        },
+        "props": {
+          "text": "68%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Temp2"
+        },
+        "position": {
+          "x": 446,
+          "y": 482,
+          "width": 180,
+          "height": 40
+        },
+        "props": {
+          "text": "150 \u00b0F  /  SP 150\u00b0",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 17,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Output2"
+        },
+        "position": {
+          "x": 446,
+          "y": 523,
+          "width": 180,
+          "height": 30
+        },
+        "props": {
+          "text": "Output: 65%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Status2"
+        },
+        "position": {
+          "x": 446,
+          "y": 560,
+          "width": 180,
+          "height": 30
+        },
+        "props": {
+          "text": "READY",
+          "style": {
+            "color": "#67D4A0",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "StagePanel3"
+        },
+        "position": {
+          "x": 645,
+          "y": 318,
+          "width": 196,
+          "height": 285
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Stage3"
+        },
+        "position": {
+          "x": 653,
+          "y": 326,
+          "width": 180,
+          "height": 35
+        },
+        "props": {
+          "text": "STAGE 04",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "TankBackground3"
+        },
+        "position": {
+          "x": 712,
+          "y": 369,
+          "width": 62,
+          "height": 103
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400,
+            "backgroundColor": "#303A48",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "TankLevel3"
+        },
+        "position": {
+          "x": 712,
+          "y": 434,
+          "width": 62,
+          "height": 38
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400,
+            "backgroundColor": "#A67B3D",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Level3"
+        },
+        "position": {
+          "x": 713,
+          "y": 397,
+          "width": 65,
+          "height": 35
+        },
+        "props": {
+          "text": "37%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Temp3"
+        },
+        "position": {
+          "x": 653,
+          "y": 482,
+          "width": 180,
+          "height": 40
+        },
+        "props": {
+          "text": "149 \u00b0F  /  SP 150\u00b0",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 17,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Output3"
+        },
+        "position": {
+          "x": 653,
+          "y": 523,
+          "width": 180,
+          "height": 30
+        },
+        "props": {
+          "text": "Output: 88%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Status3"
+        },
+        "position": {
+          "x": 653,
+          "y": 560,
+          "width": 180,
+          "height": 30
+        },
+        "props": {
+          "text": "LOW LEVEL",
+          "style": {
+            "color": "#EAB96B",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "StagePanel4"
+        },
+        "position": {
+          "x": 852,
+          "y": 318,
+          "width": 196,
+          "height": 285
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Stage4"
+        },
+        "position": {
+          "x": 860,
+          "y": 326,
+          "width": 180,
+          "height": 35
+        },
+        "props": {
+          "text": "STAGE 05",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "TankBackground4"
+        },
+        "position": {
+          "x": 919,
+          "y": 369,
+          "width": 62,
+          "height": 103
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400,
+            "backgroundColor": "#303A48",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "TankLevel4"
+        },
+        "position": {
+          "x": 919,
+          "y": 391,
+          "width": 62,
+          "height": 81
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400,
+            "backgroundColor": "#426887",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Level4"
+        },
+        "position": {
+          "x": 920,
+          "y": 397,
+          "width": 65,
+          "height": 35
+        },
+        "props": {
+          "text": "79%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Temp4"
+        },
+        "position": {
+          "x": 860,
+          "y": 482,
+          "width": 180,
+          "height": 40
+        },
+        "props": {
+          "text": "160 \u00b0F  /  SP 160\u00b0",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 17,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Output4"
+        },
+        "position": {
+          "x": 860,
+          "y": 523,
+          "width": 180,
+          "height": 30
+        },
+        "props": {
+          "text": "Output: 70%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Status4"
+        },
+        "position": {
+          "x": 860,
+          "y": 560,
+          "width": 180,
+          "height": 30
+        },
+        "props": {
+          "text": "READY",
+          "style": {
+            "color": "#67D4A0",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "StagePanel5"
+        },
+        "position": {
+          "x": 1059,
+          "y": 318,
+          "width": 196,
+          "height": 285
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Stage5"
+        },
+        "position": {
+          "x": 1067,
+          "y": 326,
+          "width": 180,
+          "height": 35
+        },
+        "props": {
+          "text": "STAGE 06",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "TankBackground5"
+        },
+        "position": {
+          "x": 1126,
+          "y": 369,
+          "width": 62,
+          "height": 103
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400,
+            "backgroundColor": "#303A48",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "TankLevel5"
+        },
+        "position": {
+          "x": 1126,
+          "y": 384,
+          "width": 62,
+          "height": 88
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400,
+            "backgroundColor": "#426887",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Level5"
+        },
+        "position": {
+          "x": 1127,
+          "y": 397,
+          "width": 65,
+          "height": 35
+        },
+        "props": {
+          "text": "85%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Temp5"
+        },
+        "position": {
+          "x": 1067,
+          "y": 482,
+          "width": 180,
+          "height": 40
+        },
+        "props": {
+          "text": "150 \u00b0F  /  SP 150\u00b0",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 17,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Output5"
+        },
+        "position": {
+          "x": 1067,
+          "y": 523,
+          "width": 180,
+          "height": 30
+        },
+        "props": {
+          "text": "Output: 58%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Status5"
+        },
+        "position": {
+          "x": 1067,
+          "y": 560,
+          "width": 180,
+          "height": 30
+        },
+        "props": {
+          "text": "READY",
+          "style": {
+            "color": "#67D4A0",
+            "fontSize": 14,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Alarm"
+        },
+        "position": {
+          "x": 24,
+          "y": 618,
+          "width": 1230,
+          "height": 45
+        },
+        "props": {
+          "text": "STG-04  \u2022  Low level warning: 37% (demo threshold 40%)",
+          "style": {
+            "color": "#EAB96B",
+            "fontSize": 16,
+            "padding": "8px",
+            "fontWeight": 400,
+            "backgroundColor": "#30281C",
+            "borderRadius": "6px"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,591 @@
+{
+  "custom": {
+    "demoMode": true
+  },
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1280,
+      "height": 800
+    }
+  },
+  "root": {
+    "type": "ia.container.coord",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "fixed",
+      "style": {
+        "backgroundColor": "#10151D"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "x": 24,
+          "y": 12,
+          "width": 800,
+          "height": 48
+        },
+        "props": {
+          "text": "HEATER SYSTEM  /  HTR-01",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 28,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Demo"
+        },
+        "position": {
+          "x": 1000,
+          "y": 18,
+          "width": 250,
+          "height": 36
+        },
+        "props": {
+          "text": "DEMO DATA \u2022 READ ONLY",
+          "style": {
+            "color": "#EAB96B",
+            "fontSize": 13,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "PageTitle"
+        },
+        "position": {
+          "x": 24,
+          "y": 65,
+          "width": 1220,
+          "height": 42
+        },
+        "props": {
+          "text": "PREVENTIVE MAINTENANCE",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 22,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "Nav0"
+        },
+        "position": {
+          "x": 24,
+          "y": 112,
+          "width": 210,
+          "height": 36
+        },
+        "props": {
+          "text": "Real-time overview",
+          "style": {
+            "backgroundColor": "#181F29",
+            "color": "#E5E7EB"
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "system.perspective.navigate(view=\"Heater/Overview\")"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "Nav1"
+        },
+        "position": {
+          "x": 244,
+          "y": 112,
+          "width": 210,
+          "height": 36
+        },
+        "props": {
+          "text": "Levels & valves",
+          "style": {
+            "backgroundColor": "#181F29",
+            "color": "#E5E7EB"
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "system.perspective.navigate(view=\"Heater/Levels_Valves\")"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "Nav2"
+        },
+        "position": {
+          "x": 464,
+          "y": 112,
+          "width": 210,
+          "height": 36
+        },
+        "props": {
+          "text": "PM history",
+          "style": {
+            "backgroundColor": "#35516D",
+            "color": "#E5E7EB"
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "system.perspective.navigate(view=\"Heater/PM_History\")"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiPanel0"
+        },
+        "position": {
+          "x": 24,
+          "y": 165,
+          "width": 298,
+          "height": 100
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiLabel0"
+        },
+        "position": {
+          "x": 34,
+          "y": 170,
+          "width": 278,
+          "height": 32
+        },
+        "props": {
+          "text": "PM COMPLIANCE",
+          "style": {
+            "color": "#94A3B8",
+            "fontSize": 13,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiValue0"
+        },
+        "position": {
+          "x": 34,
+          "y": 203,
+          "width": 278,
+          "height": 54
+        },
+        "props": {
+          "text": "92%",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 28,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiPanel1"
+        },
+        "position": {
+          "x": 334,
+          "y": 165,
+          "width": 298,
+          "height": 100
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiLabel1"
+        },
+        "position": {
+          "x": 344,
+          "y": 170,
+          "width": 278,
+          "height": 32
+        },
+        "props": {
+          "text": "DUE SOON",
+          "style": {
+            "color": "#94A3B8",
+            "fontSize": 13,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiValue1"
+        },
+        "position": {
+          "x": 344,
+          "y": 203,
+          "width": 278,
+          "height": 54
+        },
+        "props": {
+          "text": "2",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 28,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiPanel2"
+        },
+        "position": {
+          "x": 644,
+          "y": 165,
+          "width": 298,
+          "height": 100
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiLabel2"
+        },
+        "position": {
+          "x": 654,
+          "y": 170,
+          "width": 278,
+          "height": 32
+        },
+        "props": {
+          "text": "OVERDUE",
+          "style": {
+            "color": "#94A3B8",
+            "fontSize": 13,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiValue2"
+        },
+        "position": {
+          "x": 654,
+          "y": 203,
+          "width": 278,
+          "height": 54
+        },
+        "props": {
+          "text": "0",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 28,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiPanel3"
+        },
+        "position": {
+          "x": 954,
+          "y": 165,
+          "width": 298,
+          "height": 100
+        },
+        "props": {
+          "text": "",
+          "style": {
+            "backgroundColor": "#181F29",
+            "border": "1px solid #344050",
+            "borderRadius": "6px"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiLabel3"
+        },
+        "position": {
+          "x": 964,
+          "y": 170,
+          "width": 278,
+          "height": 32
+        },
+        "props": {
+          "text": "COMPLETED / 30 DAYS",
+          "style": {
+            "color": "#94A3B8",
+            "fontSize": 13,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "KpiValue3"
+        },
+        "position": {
+          "x": 964,
+          "y": 203,
+          "width": 278,
+          "height": 54
+        },
+        "props": {
+          "text": "8",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 28,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "UpcomingHeading"
+        },
+        "position": {
+          "x": 24,
+          "y": 275,
+          "width": 1200,
+          "height": 35
+        },
+        "props": {
+          "text": "UPCOMING MAINTENANCE",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.table",
+        "meta": {
+          "name": "UpcomingPM"
+        },
+        "position": {
+          "x": 24,
+          "y": 315,
+          "width": 1230,
+          "height": 150
+        },
+        "props": {
+          "data": [
+            {
+              "Asset": "STG-04",
+              "Task": "Level sensor inspection",
+              "Due": "2026-11-20",
+              "Status": "Due soon"
+            },
+            {
+              "Asset": "STG-02",
+              "Task": "Heater element inspection",
+              "Due": "2026-11-24",
+              "Status": "Due soon"
+            },
+            {
+              "Asset": "HTR-01",
+              "Task": "Safety circuit inspection",
+              "Due": "2026-12-01",
+              "Status": "Scheduled"
+            }
+          ],
+          "style": {
+            "backgroundColor": "#181F29",
+            "color": "#E5E7EB"
+          },
+          "headerStyle": {
+            "backgroundColor": "#263344",
+            "color": "#E5E7EB"
+          },
+          "rowStyle": {
+            "backgroundColor": "#181F29",
+            "color": "#E5E7EB"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "HistoryHeading"
+        },
+        "position": {
+          "x": 24,
+          "y": 480,
+          "width": 1200,
+          "height": 35
+        },
+        "props": {
+          "text": "COMPLETED PM HISTORY",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.table",
+        "meta": {
+          "name": "PMHistory"
+        },
+        "position": {
+          "x": 24,
+          "y": 520,
+          "width": 1230,
+          "height": 250
+        },
+        "props": {
+          "data": [
+            {
+              "Date": "2026-11-16",
+              "Asset": "STG-01",
+              "Task": "Tank & strainer cleaning",
+              "Technician": "Demo technician",
+              "Work order": "WO-1068",
+              "Result": "Complete"
+            },
+            {
+              "Date": "2026-11-14",
+              "Asset": "STG-02",
+              "Task": "Electrical inspection",
+              "Technician": "Demo technician",
+              "Work order": "WO-1061",
+              "Result": "Complete"
+            },
+            {
+              "Date": "2026-11-12",
+              "Asset": "STG-03",
+              "Task": "Temperature calibration",
+              "Technician": "Demo technician",
+              "Work order": "WO-1054",
+              "Result": "Complete"
+            },
+            {
+              "Date": "2026-11-10",
+              "Asset": "STG-04",
+              "Task": "Tank cleaning",
+              "Technician": "Demo technician",
+              "Work order": "WO-1047",
+              "Result": "Complete"
+            },
+            {
+              "Date": "2026-11-08",
+              "Asset": "STG-05",
+              "Task": "Pump inspection",
+              "Technician": "Demo technician",
+              "Work order": "WO-1040",
+              "Result": "Complete"
+            },
+            {
+              "Date": "2026-11-06",
+              "Asset": "STG-06",
+              "Task": "Valve inspection",
+              "Technician": "Demo technician",
+              "Work order": "WO-1033",
+              "Result": "Complete"
+            }
+          ],
+          "style": {
+            "backgroundColor": "#181F29",
+            "color": "#E5E7EB"
+          },
+          "headerStyle": {
+            "backgroundColor": "#263344",
+            "color": "#E5E7EB"
+          },
+          "rowStyle": {
+            "backgroundColor": "#181F29",
+            "color": "#E5E7EB"
+          }
+        }
+      }
+    ]
+  }
+}

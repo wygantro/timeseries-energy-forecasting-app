@@ -1,0 +1,870 @@
+{
+  "custom": {
+    "demoMode": true
+  },
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1280,
+      "height": 800
+    }
+  },
+  "root": {
+    "type": "ia.container.coord",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "mode": "fixed",
+      "style": {
+        "backgroundColor": "#10151D"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Title"
+        },
+        "position": {
+          "x": 24,
+          "y": 12,
+          "width": 800,
+          "height": 48
+        },
+        "props": {
+          "text": "HEATER SYSTEM  /  HTR-01",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 28,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "Demo"
+        },
+        "position": {
+          "x": 1000,
+          "y": 18,
+          "width": 250,
+          "height": 36
+        },
+        "props": {
+          "text": "DEMO DATA \u2022 READ ONLY",
+          "style": {
+            "color": "#EAB96B",
+            "fontSize": 13,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "PageTitle"
+        },
+        "position": {
+          "x": 24,
+          "y": 65,
+          "width": 1220,
+          "height": 42
+        },
+        "props": {
+          "text": "LEVEL TRACES & VALVE STATUS",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 22,
+            "padding": "8px",
+            "fontWeight": 600
+          }
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "Nav0"
+        },
+        "position": {
+          "x": 24,
+          "y": 112,
+          "width": 210,
+          "height": 36
+        },
+        "props": {
+          "text": "Real-time overview",
+          "style": {
+            "backgroundColor": "#181F29",
+            "color": "#E5E7EB"
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "system.perspective.navigate(view=\"Heater/Overview\")"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "Nav1"
+        },
+        "position": {
+          "x": 244,
+          "y": 112,
+          "width": 210,
+          "height": 36
+        },
+        "props": {
+          "text": "Levels & valves",
+          "style": {
+            "backgroundColor": "#35516D",
+            "color": "#E5E7EB"
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "system.perspective.navigate(view=\"Heater/Levels_Valves\")"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.input.button",
+        "meta": {
+          "name": "Nav2"
+        },
+        "position": {
+          "x": 464,
+          "y": 112,
+          "width": 210,
+          "height": 36
+        },
+        "props": {
+          "text": "PM history",
+          "style": {
+            "backgroundColor": "#181F29",
+            "color": "#E5E7EB"
+          }
+        },
+        "events": {
+          "component": {
+            "onActionPerformed": {
+              "type": "script",
+              "scope": "G",
+              "config": {
+                "script": "system.perspective.navigate(view=\"Heater/PM_History\")"
+              }
+            }
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "TrendTitle"
+        },
+        "position": {
+          "x": 24,
+          "y": 158,
+          "width": 1200,
+          "height": 38
+        },
+        "props": {
+          "text": "LIQUID LEVEL (%)  \u2022  SAMPLE 8-HOUR TRACE",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 17,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.chart.xy",
+        "meta": {
+          "name": "LevelTrend"
+        },
+        "position": {
+          "x": 24,
+          "y": 200,
+          "width": 1230,
+          "height": 300
+        },
+        "props": {
+          "dataSources": {
+            "levels": [
+              {
+                "hour": 0.0,
+                "Stage 1": 82.0,
+                "Stage 2": 79.4,
+                "Stage 3": 71.6,
+                "Stage 4": 70.0,
+                "Stage 5": 76.0,
+                "Stage 6": 81.2
+              },
+              {
+                "hour": 0.16666666666666666,
+                "Stage 1": 83.9,
+                "Stage 2": 79.9,
+                "Stage 3": 70.3,
+                "Stage 4": 70.0,
+                "Stage 5": 75.2,
+                "Stage 6": 82.2
+              },
+              {
+                "hour": 0.3333333333333333,
+                "Stage 1": 85.2,
+                "Stage 2": 79.5,
+                "Stage 3": 68.5,
+                "Stage 4": 69.9,
+                "Stage 5": 75.3,
+                "Stage 6": 83.9
+              },
+              {
+                "hour": 0.5,
+                "Stage 1": 85.7,
+                "Stage 2": 78.2,
+                "Stage 3": 66.7,
+                "Stage 4": 69.9,
+                "Stage 5": 76.4,
+                "Stage 6": 85.8
+              },
+              {
+                "hour": 0.6666666666666666,
+                "Stage 1": 85.3,
+                "Stage 2": 76.5,
+                "Stage 3": 65.2,
+                "Stage 4": 69.8,
+                "Stage 5": 78.0,
+                "Stage 6": 87.4
+              },
+              {
+                "hour": 0.8333333333333334,
+                "Stage 1": 84.1,
+                "Stage 2": 74.7,
+                "Stage 3": 64.5,
+                "Stage 4": 69.6,
+                "Stage 5": 79.8,
+                "Stage 6": 88.4
+              },
+              {
+                "hour": 1.0,
+                "Stage 1": 82.5,
+                "Stage 2": 73.4,
+                "Stage 3": 64.6,
+                "Stage 4": 69.5,
+                "Stage 5": 81.3,
+                "Stage 6": 88.5
+              },
+              {
+                "hour": 1.1666666666666667,
+                "Stage 1": 80.8,
+                "Stage 2": 72.7,
+                "Stage 3": 65.6,
+                "Stage 4": 69.3,
+                "Stage 5": 82.2,
+                "Stage 6": 87.7
+              },
+              {
+                "hour": 1.3333333333333333,
+                "Stage 1": 79.5,
+                "Stage 2": 72.8,
+                "Stage 3": 67.1,
+                "Stage 4": 69.1,
+                "Stage 5": 82.3,
+                "Stage 6": 86.4
+              },
+              {
+                "hour": 1.5,
+                "Stage 1": 78.8,
+                "Stage 2": 73.7,
+                "Stage 3": 68.7,
+                "Stage 4": 68.8,
+                "Stage 5": 81.6,
+                "Stage 6": 84.8
+              },
+              {
+                "hour": 1.6666666666666667,
+                "Stage 1": 79.0,
+                "Stage 2": 75.1,
+                "Stage 3": 70.1,
+                "Stage 4": 68.6,
+                "Stage 5": 80.3,
+                "Stage 6": 83.3
+              },
+              {
+                "hour": 1.8333333333333333,
+                "Stage 1": 79.8,
+                "Stage 2": 76.7,
+                "Stage 3": 70.9,
+                "Stage 4": 68.3,
+                "Stage 5": 78.8,
+                "Stage 6": 82.3
+              },
+              {
+                "hour": 2.0,
+                "Stage 1": 81.2,
+                "Stage 2": 78.0,
+                "Stage 3": 71.0,
+                "Stage 4": 67.9,
+                "Stage 5": 77.4,
+                "Stage 6": 82.0
+              },
+              {
+                "hour": 2.1666666666666665,
+                "Stage 1": 82.6,
+                "Stage 2": 78.7,
+                "Stage 3": 70.3,
+                "Stage 4": 67.6,
+                "Stage 5": 76.4,
+                "Stage 6": 82.4
+              },
+              {
+                "hour": 2.3333333333333335,
+                "Stage 1": 83.9,
+                "Stage 2": 78.8,
+                "Stage 3": 69.2,
+                "Stage 4": 67.2,
+                "Stage 5": 76.2,
+                "Stage 6": 83.5
+              },
+              {
+                "hour": 2.5,
+                "Stage 1": 84.6,
+                "Stage 2": 78.2,
+                "Stage 3": 67.8,
+                "Stage 4": 66.8,
+                "Stage 5": 76.6,
+                "Stage 6": 84.8
+              },
+              {
+                "hour": 2.6666666666666665,
+                "Stage 1": 84.6,
+                "Stage 2": 77.1,
+                "Stage 3": 66.5,
+                "Stage 4": 66.3,
+                "Stage 5": 77.6,
+                "Stage 6": 86.1
+              },
+              {
+                "hour": 2.8333333333333335,
+                "Stage 1": 84.1,
+                "Stage 2": 75.8,
+                "Stage 3": 65.7,
+                "Stage 4": 65.9,
+                "Stage 5": 78.8,
+                "Stage 6": 87.1
+              },
+              {
+                "hour": 3.0,
+                "Stage 1": 83.0,
+                "Stage 2": 74.6,
+                "Stage 3": 65.5,
+                "Stage 4": 65.4,
+                "Stage 5": 80.1,
+                "Stage 6": 87.5
+              },
+              {
+                "hour": 3.1666666666666665,
+                "Stage 1": 81.8,
+                "Stage 2": 73.9,
+                "Stage 3": 65.9,
+                "Stage 4": 64.8,
+                "Stage 5": 80.9,
+                "Stage 6": 87.3
+              },
+              {
+                "hour": 3.3333333333333335,
+                "Stage 1": 80.7,
+                "Stage 2": 73.7,
+                "Stage 3": 66.7,
+                "Stage 4": 64.3,
+                "Stage 5": 81.3,
+                "Stage 6": 86.5
+              },
+              {
+                "hour": 3.5,
+                "Stage 1": 80.0,
+                "Stage 2": 74.0,
+                "Stage 3": 67.9,
+                "Stage 4": 63.7,
+                "Stage 5": 81.1,
+                "Stage 6": 85.5
+              },
+              {
+                "hour": 3.6666666666666665,
+                "Stage 1": 79.8,
+                "Stage 2": 74.8,
+                "Stage 3": 68.9,
+                "Stage 4": 63.1,
+                "Stage 5": 80.4,
+                "Stage 6": 84.4
+              },
+              {
+                "hour": 3.8333333333333335,
+                "Stage 1": 80.2,
+                "Stage 2": 75.9,
+                "Stage 3": 69.7,
+                "Stage 4": 62.4,
+                "Stage 5": 79.4,
+                "Stage 6": 83.5
+              },
+              {
+                "hour": 4.0,
+                "Stage 1": 80.9,
+                "Stage 2": 76.8,
+                "Stage 3": 70.0,
+                "Stage 4": 61.8,
+                "Stage 5": 78.4,
+                "Stage 6": 83.1
+              },
+              {
+                "hour": 4.166666666666667,
+                "Stage 1": 81.9,
+                "Stage 2": 77.5,
+                "Stage 3": 69.8,
+                "Stage 4": 61.0,
+                "Stage 5": 77.6,
+                "Stage 6": 83.1
+              },
+              {
+                "hour": 4.333333333333333,
+                "Stage 1": 82.8,
+                "Stage 2": 77.8,
+                "Stage 3": 69.2,
+                "Stage 4": 60.3,
+                "Stage 5": 77.2,
+                "Stage 6": 83.6
+              },
+              {
+                "hour": 4.5,
+                "Stage 1": 83.4,
+                "Stage 2": 77.6,
+                "Stage 3": 68.4,
+                "Stage 4": 59.6,
+                "Stage 5": 77.3,
+                "Stage 6": 84.4
+              },
+              {
+                "hour": 4.666666666666667,
+                "Stage 1": 83.7,
+                "Stage 2": 77.1,
+                "Stage 3": 67.5,
+                "Stage 4": 58.8,
+                "Stage 5": 77.7,
+                "Stage 6": 85.2
+              },
+              {
+                "hour": 4.833333333333333,
+                "Stage 1": 83.5,
+                "Stage 2": 76.3,
+                "Stage 3": 66.9,
+                "Stage 4": 58.0,
+                "Stage 5": 78.5,
+                "Stage 6": 86.0
+              },
+              {
+                "hour": 5.0,
+                "Stage 1": 83.0,
+                "Stage 2": 75.6,
+                "Stage 3": 66.6,
+                "Stage 4": 57.1,
+                "Stage 5": 79.2,
+                "Stage 6": 86.4
+              },
+              {
+                "hour": 5.166666666666667,
+                "Stage 1": 82.3,
+                "Stage 2": 75.0,
+                "Stage 3": 66.6,
+                "Stage 4": 56.2,
+                "Stage 5": 79.9,
+                "Stage 6": 86.4
+              },
+              {
+                "hour": 5.333333333333333,
+                "Stage 1": 81.6,
+                "Stage 2": 74.7,
+                "Stage 3": 67.0,
+                "Stage 4": 55.3,
+                "Stage 5": 80.2,
+                "Stage 6": 86.1
+              },
+              {
+                "hour": 5.5,
+                "Stage 1": 81.1,
+                "Stage 2": 74.8,
+                "Stage 3": 67.6,
+                "Stage 4": 54.4,
+                "Stage 5": 80.2,
+                "Stage 6": 85.6
+              },
+              {
+                "hour": 5.666666666666667,
+                "Stage 1": 80.9,
+                "Stage 2": 75.1,
+                "Stage 3": 68.2,
+                "Stage 4": 53.4,
+                "Stage 5": 80.0,
+                "Stage 6": 85.0
+              },
+              {
+                "hour": 5.833333333333333,
+                "Stage 1": 80.9,
+                "Stage 2": 75.6,
+                "Stage 3": 68.7,
+                "Stage 4": 52.5,
+                "Stage 5": 79.5,
+                "Stage 6": 84.5
+              },
+              {
+                "hour": 6.0,
+                "Stage 1": 81.2,
+                "Stage 2": 76.1,
+                "Stage 3": 68.9,
+                "Stage 4": 51.4,
+                "Stage 5": 79.0,
+                "Stage 6": 84.2
+              },
+              {
+                "hour": 6.166666666666667,
+                "Stage 1": 81.7,
+                "Stage 2": 76.6,
+                "Stage 3": 68.9,
+                "Stage 4": 50.4,
+                "Stage 5": 78.6,
+                "Stage 6": 84.1
+              },
+              {
+                "hour": 6.333333333333333,
+                "Stage 1": 82.1,
+                "Stage 2": 76.8,
+                "Stage 3": 68.7,
+                "Stage 4": 49.3,
+                "Stage 5": 78.3,
+                "Stage 6": 84.2
+              },
+              {
+                "hour": 6.5,
+                "Stage 1": 82.5,
+                "Stage 2": 76.7,
+                "Stage 3": 68.4,
+                "Stage 4": 48.2,
+                "Stage 5": 78.3,
+                "Stage 6": 84.6
+              },
+              {
+                "hour": 6.666666666666667,
+                "Stage 1": 82.6,
+                "Stage 2": 76.6,
+                "Stage 3": 68.0,
+                "Stage 4": 47.1,
+                "Stage 5": 78.4,
+                "Stage 6": 84.9
+              },
+              {
+                "hour": 6.833333333333333,
+                "Stage 1": 82.6,
+                "Stage 2": 76.3,
+                "Stage 3": 67.7,
+                "Stage 4": 45.9,
+                "Stage 5": 78.7,
+                "Stage 6": 85.2
+              },
+              {
+                "hour": 7.0,
+                "Stage 1": 82.4,
+                "Stage 2": 76.0,
+                "Stage 3": 67.6,
+                "Stage 4": 44.7,
+                "Stage 5": 78.9,
+                "Stage 6": 85.4
+              },
+              {
+                "hour": 7.166666666666667,
+                "Stage 1": 82.2,
+                "Stage 2": 75.8,
+                "Stage 3": 67.6,
+                "Stage 4": 43.5,
+                "Stage 5": 79.1,
+                "Stage 6": 85.4
+              },
+              {
+                "hour": 7.333333333333333,
+                "Stage 1": 82.0,
+                "Stage 2": 75.7,
+                "Stage 3": 67.7,
+                "Stage 4": 42.3,
+                "Stage 5": 79.3,
+                "Stage 6": 85.3
+              },
+              {
+                "hour": 7.5,
+                "Stage 1": 81.9,
+                "Stage 2": 75.8,
+                "Stage 3": 67.9,
+                "Stage 4": 41.0,
+                "Stage 5": 79.2,
+                "Stage 6": 85.2
+              },
+              {
+                "hour": 7.666666666666667,
+                "Stage 1": 81.9,
+                "Stage 2": 75.8,
+                "Stage 3": 68.0,
+                "Stage 4": 39.7,
+                "Stage 5": 79.2,
+                "Stage 6": 85.0
+              },
+              {
+                "hour": 7.833333333333333,
+                "Stage 1": 81.9,
+                "Stage 2": 76.0,
+                "Stage 3": 68.0,
+                "Stage 4": 38.4,
+                "Stage 5": 79.1,
+                "Stage 6": 85.0
+              },
+              {
+                "hour": 8.0,
+                "Stage 1": 82.0,
+                "Stage 2": 76.0,
+                "Stage 3": 68.0,
+                "Stage 4": 37.0,
+                "Stage 5": 79.0,
+                "Stage 6": 85.0
+              }
+            ]
+          },
+          "xAxes": [
+            {
+              "name": "time",
+              "label": {
+                "text": "Hours elapsed"
+              },
+              "type": "value"
+            }
+          ],
+          "yAxes": [
+            {
+              "name": "level",
+              "label": {
+                "text": "Level (%)"
+              },
+              "type": "value",
+              "value": {
+                "range": {
+                  "min": 0,
+                  "max": 100,
+                  "strict": true
+                }
+              }
+            }
+          ],
+          "series": [
+            {
+              "name": "Stage 1",
+              "label": {
+                "text": "Stage 1"
+              },
+              "data": {
+                "source": "levels",
+                "x": "hour",
+                "y": "Stage 1"
+              },
+              "xAxis": "time",
+              "yAxis": "level",
+              "render": "line"
+            },
+            {
+              "name": "Stage 2",
+              "label": {
+                "text": "Stage 2"
+              },
+              "data": {
+                "source": "levels",
+                "x": "hour",
+                "y": "Stage 2"
+              },
+              "xAxis": "time",
+              "yAxis": "level",
+              "render": "line"
+            },
+            {
+              "name": "Stage 3",
+              "label": {
+                "text": "Stage 3"
+              },
+              "data": {
+                "source": "levels",
+                "x": "hour",
+                "y": "Stage 3"
+              },
+              "xAxis": "time",
+              "yAxis": "level",
+              "render": "line"
+            },
+            {
+              "name": "Stage 4",
+              "label": {
+                "text": "Stage 4"
+              },
+              "data": {
+                "source": "levels",
+                "x": "hour",
+                "y": "Stage 4"
+              },
+              "xAxis": "time",
+              "yAxis": "level",
+              "render": "line"
+            },
+            {
+              "name": "Stage 5",
+              "label": {
+                "text": "Stage 5"
+              },
+              "data": {
+                "source": "levels",
+                "x": "hour",
+                "y": "Stage 5"
+              },
+              "xAxis": "time",
+              "yAxis": "level",
+              "render": "line"
+            },
+            {
+              "name": "Stage 6",
+              "label": {
+                "text": "Stage 6"
+              },
+              "data": {
+                "source": "levels",
+                "x": "hour",
+                "y": "Stage 6"
+              },
+              "xAxis": "time",
+              "yAxis": "level",
+              "render": "line"
+            }
+          ],
+          "style": {
+            "backgroundColor": "#181F29"
+          }
+        }
+      },
+      {
+        "type": "ia.display.label",
+        "meta": {
+          "name": "ValveHeading"
+        },
+        "position": {
+          "x": 24,
+          "y": 507,
+          "width": 1200,
+          "height": 36
+        },
+        "props": {
+          "text": "LIVE VALVE FEEDBACK (SIMULATED)",
+          "style": {
+            "color": "#E5E7EB",
+            "fontSize": 18,
+            "padding": "8px",
+            "fontWeight": 400
+          }
+        }
+      },
+      {
+        "type": "ia.display.table",
+        "meta": {
+          "name": "ValveTable"
+        },
+        "position": {
+          "x": 24,
+          "y": 548,
+          "width": 1230,
+          "height": 225
+        },
+        "props": {
+          "data": [
+            {
+              "Stage": "STG-01",
+              "Level (%)": 82,
+              "Fill": "CLOSED",
+              "Drain": "CLOSED",
+              "Recirculation": "OPEN",
+              "Heater output (%)": 55
+            },
+            {
+              "Stage": "STG-02",
+              "Level (%)": 76,
+              "Fill": "CLOSED",
+              "Drain": "CLOSED",
+              "Recirculation": "OPEN",
+              "Heater output (%)": 72
+            },
+            {
+              "Stage": "STG-03",
+              "Level (%)": 68,
+              "Fill": "CLOSED",
+              "Drain": "CLOSED",
+              "Recirculation": "OPEN",
+              "Heater output (%)": 65
+            },
+            {
+              "Stage": "STG-04",
+              "Level (%)": 37,
+              "Fill": "OPEN",
+              "Drain": "CLOSED",
+              "Recirculation": "OPEN",
+              "Heater output (%)": 88
+            },
+            {
+              "Stage": "STG-05",
+              "Level (%)": 79,
+              "Fill": "CLOSED",
+              "Drain": "CLOSED",
+              "Recirculation": "OPEN",
+              "Heater output (%)": 70
+            },
+            {
+              "Stage": "STG-06",
+              "Level (%)": 85,
+              "Fill": "CLOSED",
+              "Drain": "CLOSED",
+              "Recirculation": "OPEN",
+              "Heater output (%)": 58
+            }
+          ],
+          "style": {
+            "backgroundColor": "#181F29",
+            "color": "#E5E7EB"
+          },
+          "headerStyle": {
+            "backgroundColor": "#263344",
+            "color": "#E5E7EB"
+          },
+          "rowStyle": {
+            "backgroundColor": "#181F29",
+            "color": "#E5E7EB"
+          }
+        }
+      }
+    ]
+  }
+}
